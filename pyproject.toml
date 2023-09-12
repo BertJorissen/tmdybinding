@@ -40,3 +40,6 @@ keywords = [
 "repository" = "https://github.com/BertJorissen/tmdybinding"
 "documentation" = "https://bertjorissen.github.io/tmdybinding"
 "changelog" = "https://github.com/BertJorissen/tmdybinding/blob/master/changelog.md"
+
+[tool.setuptools]
+packages = ["tmdybinding"]

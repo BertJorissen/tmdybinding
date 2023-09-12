@@ -5,7 +5,7 @@ Author: Bert Jorissen
 """
 
 import numpy as np
-from .parameters import ParametersList
+from .sg_parameters import ParametersList
 
 
 class TmdMatrices:
