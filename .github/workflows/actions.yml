@@ -37,7 +37,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
     permissions:
       id-token: write
-    needs: [ test-sdist ]
+    needs: [ build-sdist ]
     runs-on: ubuntu-latest
     steps:
       - name: Download artefacts
