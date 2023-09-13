@@ -9,7 +9,6 @@ jobs:
     name: Create sources on ${{ matrix.os }} with Python ${{ matrix.python-version }}
     environment: actions
     if: github.ref == 'refs/heads/master'
-    needs: [ test-all-all ]
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
