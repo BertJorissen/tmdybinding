@@ -1,0 +1,69 @@
+# Project information
+site_name: "TMDybinding"
+site_description: "Adding TMD lattices to Pybinding"
+site_author: "Bert Jorissen"
+
+# Repository
+repo_url: https://github.com/BertJorissen/tmdybinding
+edit_uri: https://github.com/BertJorissen/tmdybinding/tree/master/docs
+
+# Copyright
+copyright:  "TMDybinding is a free software: you can redistribute it and/or modify it under the terms LICENSE. Copyright © 2023 Bert Jorissen"
+
+# Navigation
+nav:
+  - Home: 'index.md'
+  - About:
+    - README.md: 'about/README.md'
+    - LICENSE.md: 'about/LICENSE.md'
+    - changelog.md: 'about/changelog.md'
+
+# Configuration
+site_dir: "../docs/"
+theme:
+  name: material
+  language: "en"
+  logo: "assets/images/logo.svg"
+  favicon: "assets/images/favicon.ico"
+  font:
+    text: Roboto
+    code: Roboto Mono
+  primary: "grey"
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.sections
+    - navigation.expand
+#    - navigation.instant problem with the homepage
+    - navigation.tracking
+    - toc.integrate
+    - toc.follow
+  icon:
+    admonition:
+      declaration-function: fontawesome/solid/book
+      declaration-class: fontawesome/solid/book
+
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - md_in_html
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+      baselevel: 2
+  - attr_list
+  - meta
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg

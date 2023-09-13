@@ -3,7 +3,7 @@ from .tmd_abstract_lattice import AbstractLattice
 from .tmd_matrices import TmdMatrices
 
 
-class TmdNN123MeoXeo(AbstractLattice):
+class TmdNN125MeoXeo(AbstractLattice):
     r"""Monolayer of a group 1 tmd using the second nearest-neighbor 11-band model
 
     Parameters

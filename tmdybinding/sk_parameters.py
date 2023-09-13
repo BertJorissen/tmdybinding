@@ -259,6 +259,7 @@ _params_sk_abdi_mose2 = SKSimpleParametersList(dict(zip(
 )))
 
 _params_sk_rostami = SKSimpleParametersList(dict(zip(
+    # from https://link.aps.org/doi/10.1103/PhysRevB.92.195402
     [
         "a",            "lamb_m",       "lamb_x",       "material",     "theta",
         "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
@@ -270,5 +271,125 @@ _params_sk_rostami = SKSimpleParametersList(dict(zip(
         -1.094,         None,           -1.512,         -3.560,         -6.886,
         3.689,          -1.241,         -0.895,         0.252,          0.228,
         1.225,          -0.467,         1.225,          -0.467
+    ]
+)))
+
+_params_sk_dias_mos2 = SKParametersList(dict(zip(
+    # from https://link.aps.org/doi/10.1103/PhysRevB.98.075202
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_0_pps",      "v_0_ppp",
+        "v_1_e_pds",    "v_1_e_pdp",    "v_1_o_pds",    "v_1_o_pdp",
+        "v_2_e_dds",    "v_2_e_ddp",    "v_2_e_ddd",    "v_2_e_pps",    "v_2_e_ppp",
+        "v_2_o_ddp",    "v_2_o_ddd",    "v_2_o_pps",    "v_2_o_ppp",
+        "v_5_e_dds",    "v_5_e_ddp",    "v_5_e_ddd",    "v_5_e_pps",    "v_5_e_ppp",
+        "v_5_o_ddp",    "v_5_o_ddd",    "v_5_o_pps",    "v_5_o_ppp"
+    ],
+    [
+        0.3166,         0.0806,         0.0536,         "MoS2",         0.710,
+        -0.4939,        0.5624,         -0.2473,        -3.14115,       -4.0595,
+        4.1989,         -1.89235,
+        4.2398,         -1.2413,        2.2251,         -0.7614,
+        -0.6717,        0.5706,         0.2729,         -0.0914,        -0.4619,
+        0.0150,         0.0497,         0.8131,         -0.2763,
+        0.0314,         0.0961,         -0.0305,        0.3723,         0.0014,
+        0.0051,         0.0184,         -0.0395,        0.0092
+    ]
+)))
+
+_params_sk_dias_mose2 = SKParametersList(dict(zip(
+    # from https://link.aps.org/doi/10.1103/PhysRevB.98.075202
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_0_pps",      "v_0_ppp",
+        "v_1_e_pds",    "v_1_e_pdp",    "v_1_o_pds",    "v_1_o_pdp",
+        "v_2_e_dds",    "v_2_e_ddp",    "v_2_e_ddd",    "v_2_e_pps",    "v_2_e_ppp",
+        "v_2_o_ddp",    "v_2_o_ddd",    "v_2_o_pps",    "v_2_o_ppp",
+        "v_5_e_dds",    "v_5_e_ddp",    "v_5_e_ddd",    "v_5_e_pps",    "v_5_e_ppp",
+        "v_5_o_ddp",    "v_5_o_ddd",    "v_5_o_pps",    "v_5_o_ppp"
+    ],
+    [
+        0.3288,         0.0806,         0.0820,         "MoSe2",        0.710,
+        -0.1276,        0.3046,         -0.2724,        -3.8352,        -4.30195,
+        4.30095,        -2.8093,
+        3.4524,         -1.4295,        2.0197,         -0.6811,
+        -0.6674,        0.5573,         0.0970,         1.2630,         -0.4857,
+        0.01637,        0.0965,         0.9449,         -0.3039,
+        0.0776,         0.0573,         -0.04778,       0.2372,         0.0249,
+        0.0140,         0.0354,         -0.0293,        -0.0094
+    ]
+)))
+
+_params_sk_dias_mote2 = SKParametersList(dict(zip(
+    # from https://link.aps.org/doi/10.1103/PhysRevB.98.075202
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_0_pps",      "v_0_ppp",
+        "v_1_e_pds",    "v_1_e_pdp",    "v_1_o_pds",    "v_1_o_pdp",
+        "v_2_e_dds",    "v_2_e_ddp",    "v_2_e_ddd",    "v_2_e_pps",    "v_2_e_ppp",
+        "v_2_o_ddp",    "v_2_o_ddd",    "v_2_o_pps",    "v_2_o_ppp",
+        "v_5_e_dds",    "v_5_e_ddp",    "v_5_e_ddd",    "v_5_e_pps",    "v_5_e_ppp",
+        "v_5_o_ddp",    "v_5_o_ddd",    "v_5_o_pps",    "v_5_o_ppp"
+    ],
+    [
+        0.3519,         0.0806,         0.1020,         "MoTe2",        0.710,
+        -0.6630,        0.0491,         -0.2852,        -0.9084,        -1.8434,
+        2.6799,         0.0678,
+        2.2362,         -0.6279,        1.8294,         -0.5048,
+        -0.4795,        -0.0934,        0.1656,         0.8198,         -0.2483,
+        0.3267,         0.3033,         0.8459,         -0.4143,
+        -0.1493,        -0.0627,        0.0360,         0.1169,         0.2683,
+        -0.0617,        0.1002,         0.0114,         -0.0092
+    ]
+)))
+
+_params_sk_dias_ws2 = SKParametersList(dict(zip(
+    # from https://link.aps.org/doi/10.1103/PhysRevB.98.075202
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_0_pps",      "v_0_ppp",
+        "v_1_e_pds",    "v_1_e_pdp",    "v_1_o_pds",    "v_1_o_pdp",
+        "v_2_e_dds",    "v_2_e_ddp",    "v_2_e_ddd",    "v_2_e_pps",    "v_2_e_ppp",
+        "v_2_o_ddp",    "v_2_o_ddd",    "v_2_o_pps",    "v_2_o_ppp",
+        "v_5_e_dds",    "v_5_e_ddp",    "v_5_e_ddd",    "v_5_e_pps",    "v_5_e_ppp",
+        "v_5_o_ddp",    "v_5_o_ddd",    "v_5_o_pps",    "v_5_o_ppp"
+    ],
+    [
+        0.31532,        0.2754,         0.0536,         "WS2",          0.710,
+        -0.3609,        0.8877,         -0.7364,        -3.52825,       -4.5926,
+        4.415,          -1.97685,
+        5.2769,         -1.2119,        2.4044,         -0.8115,
+        -0.8942,        0.7347,         0.3417,         -0.3943,        -0.4069,
+        -0.0142,        0.0036,         0.8415,         -0.2661,
+        0.0508,         0.1278,         -0.0091,        0.1415,         0.0261,
+        -0.0135,        -0.0191,        -0.0169,        0.0262
+    ]
+)))
+
+_params_sk_dias_wse2 = SKParametersList(dict(zip(
+    # from https://link.aps.org/doi/10.1103/PhysRevB.98.075202
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_0_pps",      "v_0_ppp",
+        "v_1_e_pds",    "v_1_e_pdp",    "v_1_o_pds",    "v_1_o_pdp",
+        "v_2_e_dds",    "v_2_e_ddp",    "v_2_e_ddd",    "v_2_e_pps",    "v_2_e_ppp",
+        "v_2_o_ddp",    "v_2_o_ddd",    "v_2_o_pps",    "v_2_o_ppp",
+        "v_5_e_dds",    "v_5_e_ddp",    "v_5_e_ddd",    "v_5_e_pps",    "v_5_e_ppp",
+        "v_5_o_ddp",    "v_5_o_ddd",    "v_5_o_pps",    "v_5_o_ppp"
+    ],
+    [
+        0.3282,         0.2754,         0.0820,         "WSe2",         0.710,
+        -0.5558,        0.6233,         -1.9340,        -2.20345,       -3.6177,
+        3.1056,         -0.99385,
+        5.1750,         -0.9139,        2.1733,         -0.7688,
+        -0.8697,        0.6206,         0.3743,         0.1311,         -0.2475,
+        -0.0469,        0.0923,         0.9703,         -0.2920,
+        0.0443,         0.0912,         -0.0447,        0.1197,         0.1075,
+        0.0096,         0.0140,         -0.0451,        0.0113
     ]
 )))
