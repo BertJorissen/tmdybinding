@@ -38,6 +38,8 @@ class TmdNN125MeoXeo(AbstractLattice):
         h_2_x = self.block_diag(t_m.t_2_xe, t_m.t_2_xo)
         h_5_m = self.block_diag(t_m.t_5_me, t_m.t_5_mo)
         h_5_x = self.block_diag(t_m.t_5_xe, t_m.t_5_xo)
-        keys = ["h_0_m", "h_0_c", "h_1_m", "h_2_m", "h_2_c", "h_5_m", "h_5_c", "a", "lamb_m", "lamb_c"]
-        values = [h_0_m, h_0_x, h_1_m, h_2_m, h_2_x, h_5_m, h_5_x, self.params["a"], self.params["lamb_m"], self.params["lamb_x"]]
+        keys = ["h_0_m", "h_0_c", "h_1_m", "h_2_m", "h_2_c", "h_5_m", "h_5_c",
+                "a", "lamb_m", "lamb_c"]
+        values = [h_0_m, h_0_x, h_1_m, h_2_m, h_2_x, h_5_m, h_5_x,
+                  self.params["a"], self.params["lamb_m"], self.params["lamb_x"]]
         self.lattice_params(**dict([(key, value) for key, value in zip(keys, values)]))
