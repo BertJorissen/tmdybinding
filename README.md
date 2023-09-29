@@ -1,5 +1,5 @@
 # TMDybinding
-<img src=https://github.com/BertJorissen/kite/blob/master/docs/assets/images/logo.png?raw=true width="100">
+<img src="https://github.com/BertJorissen/tmdybinding/blob/master/docs/assets/images/logo.png?raw=true" width="100">
 
 **TMDybinding** is an open-source Python module for [Pybinding].
 

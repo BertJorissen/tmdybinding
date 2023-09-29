@@ -70,7 +70,6 @@ jobs:
   documentation:
     name: Make and upload the documentation
     environment: actions
-    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     strategy:
       matrix:
