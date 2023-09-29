@@ -4,7 +4,7 @@ version = "0.0.1"
 authors = [
     {name="Bert Jorissen", email="info@bertjorissen.be"}
 ]
-description = "Tight-binding lattices for TMDs for the Pybinding-package, Documentation: http://bertjorissen.github.io/tmdybinding (c) 2022-2023"
+description = "Tight-binding lattices for TMDs for the Pybinding-package, Documentation: https://bertjorissen.github.io/tmdybinding (c) 2022-2023"
 readme = "README.md"
 dependencies = [
     "numpy>=1.12",

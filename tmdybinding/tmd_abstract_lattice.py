@@ -9,12 +9,14 @@ import warnings
 
 @dataclass
 class Parameter:
-    """Class to store one seperate parameter"""
+    """Class to store one separate parameter"""
     name: str = ""
+
 
 @dataclass
 class FloatParameter(Parameter):
     param: Optional[float] = None
+
 
 @dataclass
 class StringParameter(Parameter):
@@ -72,18 +74,18 @@ class ParametersList:
         if input_dict is not None:
             self.from_dict(input_dict)
 
-
     @property
     def _allowed_params(self):
         return [*self._general_params_dict, *self._energy_params_dict]
 
     def _check_key(self, key) -> bool:
-        if not key in self._allowed_params:
+        if key not in self._allowed_params:
             warnings.warn("Variable {0} is not an expected variable, it is ignored".format(
                 key
             ), UserWarning, stacklevel=2)
             return False
         return True
+
     def __setitem__(self, key, value):
         if self._check_key(key):
             if key in [*self._general_params_dict]:
@@ -132,7 +134,8 @@ class SKParametersList(ParametersList):
             *[f"delta_{r}" for r in ("p", "z", "0", "1", "2")],
             *[f"v_0_pp{r}" for r in ("s", "p")],
             *[f"v_{n}_{r}_pd{i}" for n in ("1", "3", "4") for r in ("e", "o") for i in ("s", "p")],
-            *[f"v_{n}_{r}_pp{i}{t}" for n in ("2", "5", "6") for r in ("e", "o") for i in ("s", "p") for t in ("", "_tb")],
+            *[f"v_{n}_{r}_pp{i}{t}" for n in ("2", "5", "6")
+              for r in ("e", "o") for i in ("s", "p") for t in ("", "_tb")],
             *[f"v_{n}_e_dds" for n in ("2", "5", "6")],
             *[f"v_{n}_{r}_dd{i}" for n in ("2", "5", "6") for r in ("e", "o") for i in ("p", "d")]
         ]
@@ -142,7 +145,8 @@ class SKParametersList(ParametersList):
             *[rf"$\delta_{r}$" for r in ("p", "z", "0", "1", "2")],
             *[rf"$V^0_{{pp{r}}}$" for r in (r"\sigma", r"\pi")],
             *[rf"$V^{{{n}_{r}}}_{{pd{i}}}$" for n in ("1", "3", "4") for r in ("e", "o") for i in (r"\sigma", r"\pi")],
-            *[rf"$V^{{{n}_{r}}}_{{pp{i}{t}}}$" for n in ("2", "5", "6") for r in ("e", "o") for i in (r"\sigma", r"\pi") for t in ("", ",tb")],
+            *[rf"$V^{{{n}_{r}}}_{{pp{i}{t}}}$" for n in ("2", "5", "6")
+              for r in ("e", "o") for i in (r"\sigma", r"\pi") for t in ("", ",tb")],
             *[rf"$V^{{{n}_e}}_{{dd\sigmas}}$" for n in ("2", "5", "6")],
             *[rf"$V^{{{n}_{r}}}_{{dd{i}}}$" for n in ("2", "5", "6") for r in ("e", "o") for i in (r"\pi", r"\delta")]
         ]
@@ -304,7 +308,6 @@ class SKParametersList(ParametersList):
             ] = self._h_xx_x_o(r=np.sqrt(3), vpps=self["v_6_o_pps"], vppp=self["v_6_o_ppp"],
                                vppstb=self["v_6_o_pps_tb"], vppptb=self["v_6_o_ppp_tb"])
 
-
     def _subtract_param(self, p1: Optional[float], p2: Optional[float]):
         return self._comb_nonefloat([p1, -p2 if p2 is not None else None])
 
@@ -361,17 +364,20 @@ class SKParametersList(ParametersList):
         vstb_bool = vppptb is not None
         u_0_0: Optional[float] = vpps if vpps_bool else None
         u_0_1: Optional[float] = vppptb if vptb_bool else None
-        u_0_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_0_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_0: Optional[float] = self._comb_nonefloat([u_0_0, u_0_1, u_0_2])
         u_1: Optional[float] = 0 if (vpps_bool or vppp_bool or vstb_bool or vptb_bool) else None
-        u_2: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_2: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_3_0: Optional[float] = vppp if vppp_bool else None
         u_3_1: Optional[float] = vppptb if vptb_bool else None
         u_3: Optional[float] = self._comb_nonefloat([u_3_0, u_3_1])
         u_4: Optional[float] = 0 if (vpps_bool or vppp_bool or vstb_bool or vptb_bool) else None
         u_5_0: Optional[float] = vppp if vppp_bool else None
         u_5_1: Optional[float] = -vppstb if vstb_bool else None
-        u_5_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_5_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_5: Optional[float] = self._comb_nonefloat([u_5_0, u_5_1, u_5_2])
         return [u_0, u_1, u_2, u_3, u_4, u_5]
 
@@ -383,17 +389,21 @@ class SKParametersList(ParametersList):
         vstb_bool = vppptb is not None
         u_0_0: Optional[float] = vpps if vpps_bool else None
         u_0_1: Optional[float] = vppptb if vptb_bool else None
-        u_0_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_0_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_0: Optional[float] = self._comb_nonefloat([u_0_0, u_0_1, u_0_2])
-        u_2: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_2: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_3_0: Optional[float] = vppp if vppp_bool else None
         u_3_1: Optional[float] = vppptb if vptb_bool else None
         u_3: Optional[float] = self._comb_nonefloat([u_3_0, u_3_1])
         u_5_0: Optional[float] = vppp if vppp_bool else None
         u_5_1: Optional[float] = -vppstb if vstb_bool else None
-        u_5_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_5_2: Optional[float] = -r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_5: Optional[float] = self._comb_nonefloat([u_5_0, u_5_1, u_5_2])
-        u_6: Optional[float] = 2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_6: Optional[float] = 2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         return [u_0, u_2, u_3, u_5, u_6]
 
     def _h_xx_x_o(self, r: float, vpps: Optional[float], vppp: Optional[float],
@@ -404,17 +414,20 @@ class SKParametersList(ParametersList):
         vstb_bool = vppptb is not None
         u_0_0: Optional[float] = vpps if vpps_bool else None
         u_0_1: Optional[float] = -vppptb if vptb_bool else None
-        u_0_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_0_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_0: Optional[float] = self._comb_nonefloat([u_0_0, u_0_1, u_0_2])
         u_1: Optional[float] = 0 if (vpps_bool or vppp_bool or vstb_bool or vptb_bool) else None
-        u_2: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_2: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_3_0: Optional[float] = vppp if vppp_bool else None
         u_3_1: Optional[float] = -vppptb if vptb_bool else None
         u_3: Optional[float] = self._comb_nonefloat([u_3_0, u_3_1])
         u_4: Optional[float] = 0 if (vpps_bool or vppp_bool or vstb_bool or vptb_bool) else None
         u_5_0: Optional[float] = vppp if vppp_bool else None
         u_5_1: Optional[float] = vppstb if vstb_bool else None
-        u_5_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_5_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_5: Optional[float] = self._comb_nonefloat([u_5_0, u_5_1, u_5_2])
         return [u_0, u_1, u_2, u_3, u_4, u_5]
 
@@ -426,26 +439,38 @@ class SKParametersList(ParametersList):
         vstb_bool = vppptb is not None
         u_0_0: Optional[float] = vpps if vpps_bool else None
         u_0_1: Optional[float] = -vppptb if vptb_bool else None
-        u_0_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_0_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_0: Optional[float] = self._comb_nonefloat([u_0_0, u_0_1, u_0_2])
-        u_2: Optional[float] = 2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_2: Optional[float] = 2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_3_0: Optional[float] = vppp if vppp_bool else None
         u_3_1: Optional[float] = -vppptb if vptb_bool else None
         u_3: Optional[float] = self._comb_nonefloat([u_3_0, u_3_1])
         u_5_0: Optional[float] = vppp if vppp_bool else None
         u_5_1: Optional[float] = vppstb if vstb_bool else None
-        u_5_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_5_2: Optional[float] = r ** 2 * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         u_5: Optional[float] = self._comb_nonefloat([u_5_0, u_5_1, u_5_2])
-        u_6: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2) if vstb_bool and vptb_bool else None
+        u_6: Optional[float] = -2 * self._tan_theta * r * (vppptb - vppstb) / (r ** 2 + 4 * self._tan_theta ** 2)\
+            if vstb_bool and vptb_bool else None
         return [u_0, u_2, u_3, u_5, u_6]
 
     def _h_mx_e(self, r: float, vpds: Optional[float], vpdp: Optional[float]) -> List[Optional[float]]:
         if (vpds is not None) and (vpdp is not None):
             u_0 = np.sqrt(2) * r * vpdp / (np.sqrt(r ** 2 + self._tan_theta ** 2))
-            u_1 = -r * (2 * np.sqrt(3) * self._tan_theta ** 2 * vpdp + (r ** 2 - 2 * self._tan_theta ** 2) * vpds) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
-            u_2 = -r * (2 * self._tan_theta ** 2 * vpdp + np.sqrt(3) * r ** 2 * vpds) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
-            u_3 = self._tan_theta * (r ** 2 * 2 * np.sqrt(3) * vpdp + (2 * self._tan_theta ** 2 - r ** 2) * vpds) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
-            u_4 = r ** 2 * self._tan_theta * (2 * vpdp - np.sqrt(3) * vpds) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
+            u_1 = -r * (
+                    2 * np.sqrt(3) * self._tan_theta ** 2 * vpdp + (r ** 2 - 2 * self._tan_theta ** 2) * vpds
+            ) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
+            u_2 = -r * (
+                    2 * self._tan_theta ** 2 * vpdp + np.sqrt(3) * r ** 2 * vpds
+            ) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
+            u_3 = self._tan_theta * (
+                    r ** 2 * 2 * np.sqrt(3) * vpdp + (2 * self._tan_theta ** 2 - r ** 2) * vpds
+            ) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
+            u_4 = r ** 2 * self._tan_theta * (
+                    2 * vpdp - np.sqrt(3) * vpds
+            ) / (np.sqrt(2) * ((r ** 2 + self._tan_theta ** 2) ** (3 / 2)))
             return [u_0, u_1, u_2, u_3, u_4]
         else:
             return [None, None, None, None, None]
@@ -453,12 +478,15 @@ class SKParametersList(ParametersList):
     def _h_mx_o(self, r: float, vpds: Optional[float], vpdp: Optional[float]) -> List[Optional[float]]:
         if (vpds is not None) and (vpdp is not None):
             u_0 = np.sqrt(2) * self._tan_theta * vpdp / np.sqrt(r ** 2 + self._tan_theta ** 2)
-            u_1 = np.sqrt(2) * self._tan_theta * ((self._tan_theta ** 2 - r ** 2) * vpdp + r ** 2 * np.sqrt(3) * vpds) / ((r ** 2 + self._tan_theta ** 2) ** (3 / 2))
-            u_2 = np.sqrt(2) * r * ((r ** 2 - self._tan_theta ** 2) * vpdp + self._tan_theta ** 2 * np.sqrt(3) * vpds) / ((r ** 2 + self._tan_theta ** 2) ** (3 / 2))
+            u_1 = np.sqrt(2) * self._tan_theta * (
+                    (self._tan_theta ** 2 - r ** 2) * vpdp + r ** 2 * np.sqrt(3) * vpds
+            ) / ((r ** 2 + self._tan_theta ** 2) ** (3 / 2))
+            u_2 = np.sqrt(2) * r * (
+                    (r ** 2 - self._tan_theta ** 2) * vpdp + self._tan_theta ** 2 * np.sqrt(3) * vpds
+            ) / ((r ** 2 + self._tan_theta ** 2) ** (3 / 2))
             return [u_0, u_1, u_2]
         else:
             return [None, None, None]
-
 
     @property
     def _allowed_params(self):
@@ -589,7 +617,8 @@ class SKSimpleParametersList(SKParametersList):
 
     @property
     def _allowed_params(self):
-        return [*self._general_params_dict, *self._energy_params_dict, *self._sk_params_dict, *self._sk_simple_params_dict]
+        return [*self._general_params_dict, *self._energy_params_dict,
+                *self._sk_params_dict, *self._sk_simple_params_dict]
 
     def __setitem__(self, key, value):
         if self._check_key(key):
@@ -600,7 +629,8 @@ class SKSimpleParametersList(SKParametersList):
                 self._recalculate_params()
             elif key in [*self._sk_params_dict]:
                 if not (key in self._sk_params_changable):
-                    warnings.warn("The variable {0} is set by SK functions and is read-only, don't change it.".format(key))
+                    warnings.warn(
+                        "The variable {0} is set by SK functions and is read-only, don't change it.".format(key))
                 self._sk_params_dict[key].param = value
                 self._recalculate_params()
             elif key in [*self._energy_params_dict]:
@@ -944,11 +974,11 @@ class LatticeOrbitals:
         # see if definition of group and l are correct. If no group is specified, but there is an l, the l is checked
         if not group_bool and l_bool:
             for name in self.names:
-                l = np.array(kwargs["l"][name])
-                for lm in set(np.abs(l)):
-                    l_b = np.abs(l) == lm
+                l_num = np.array(kwargs["l"][name])
+                for lm in set(np.abs(l_num)):
+                    l_b = np.abs(l_num) == lm
                     assert np.sum(l_b) < 3, "the representation can only be given for max two parts"
-                    assert (np.sum(l_b) == 2 and l[l_b][0] == -l[l_b][1]) or np.sum(l_b) == 1,\
+                    assert (np.sum(l_b) == 2 and l_num[l_b][0] == -l_num[l_b][1]) or np.sum(l_b) == 1,\
                         "can't have same l-number if group is not defined"
         # create l or group is one of them is missing
         l_out = kwargs['l'] if l_bool else dict([(name, np.zeros(shape[j])) for j, name in enumerate(self.names)])
@@ -958,11 +988,11 @@ class LatticeOrbitals:
         # check l and group
         for name in self.names:
             group_l = np.array(group_out[name])
-            l = np.array(l_out[name])
+            l_num = np.array(l_out[name])
             for group_i in set(group_l):
                 group_b = group_i == group_l
                 assert np.sum(group_b) < 3, "the group for representation can only be given for max two parts"
-                assert (np.sum(group_b) == 2 and l[group_b][0] == -l[group_b][1]) or np.sum(group_b) == 1, \
+                assert (np.sum(group_b) == 2 and l_num[group_b][0] == -l_num[group_b][1]) or np.sum(group_b) == 1, \
                     "can't have same l-number in same group"
         self.__l = l_out
         self.__orbs = kwargs['orbs'] if orbs_bool else dict([(name, [str(k) for k in np.arange(shape[j])])
@@ -974,7 +1004,7 @@ class LatticeOrbitals:
         return np.array([[np.cos(phi), -np.sin(phi)], [np.sin(phi), np.cos(phi)]])
 
     @property
-    def l(self):
+    def l_num(self):
         return self.__l
 
     @property
@@ -993,19 +1023,19 @@ class LatticeOrbitals:
         dict_list = []
         for name in self.names:
             group_l = np.array(self.group[name])
-            l = np.array(self.l[name])
-            value = np.zeros((len(l), len(l)))
+            l_num = np.array(self.l_num[name])
+            value = np.zeros((len(l_num), len(l_num)))
             for group_i in set(group_l):
                 group_b = group_i == group_l
-                lm = np.abs(l[group_b][0])
-                sign = -1 if l[group_b][0] < 0 else 1
+                lm = np.abs(l_num[group_b][0])
+                sign = -1 if l_num[group_b][0] < 0 else 1
                 if np.sum(group_b) == 2:
                     matrix = matrix_func(lm, sign)
-                    for ik, k in enumerate(np.arange(len(l))[group_b]):
-                        for ikk, kk in enumerate(np.arange(len(l))[group_b]):
+                    for ik, k in enumerate(np.arange(len(l_num))[group_b]):
+                        for ikk, kk in enumerate(np.arange(len(l_num))[group_b]):
                             value[k, kk] = matrix[ik, ikk]
                 else:
-                    value[np.arange(len(l))[group_b], np.arange(len(l))[group_b]] = single(lm, sign)
+                    value[np.arange(len(l_num))[group_b], np.arange(len(l_num))[group_b]] = single(lm, sign)
             dict_list.append((name, value))
         return dict(dict_list)
 
@@ -1020,7 +1050,7 @@ class LatticeOrbitals:
             return ur_t
 
         def single(lm, sign):
-            return 1
+            return 1 + (lm * 0 + sign * 0)
 
         return self._make_matrix(matrix_func, single)
 
@@ -1031,7 +1061,7 @@ class LatticeOrbitals:
             return sign * np.diag([-1, 1]) * (1 if np.abs(lm) == 1 else -1)
 
         def single(lm, sign):
-            return 1
+            return 1 + (lm * 0 + sign * 0)
 
         return self._make_matrix(matrix_func, single)
 
@@ -1045,7 +1075,7 @@ class LatticeOrbitals:
             return ur_t
 
         def single(lm, sign):
-            return 1
+            return 1 + (lm * 0 + sign * 0)
 
         return self._make_matrix(matrix_func, single)
 
@@ -1058,7 +1088,7 @@ class LatticeOrbitals:
             return ur_t
 
         def single(lm, sign):
-            return 0
+            return 0 + (lm * 0 + sign * 0)
 
         return self._make_matrix(matrix_func, single)
 
@@ -1106,14 +1136,14 @@ class AbstractLattice:
     def soc_eo_flip(self, pol_bool: bool):
         if pol_bool:
             if self.lattice_params.h_0_m is not None:
-                assert len(self.orbital.l[self.orb_type(self.m_name)]) == 5,\
+                assert len(self.orbital.l_num[self.orb_type(self.m_name)]) == 5,\
                     "the metal doesn't have the right shape for spin-flip term"
-                assert sorted(self.orbital.l[self.orb_type(self.m_name)]) == sorted([0, 2, -2, 1, -1]),\
+                assert sorted(self.orbital.l_num[self.orb_type(self.m_name)]) == sorted([0, 2, -2, 1, -1]),\
                     "the metal l is wrong for spin-flip"
             if self.lattice_params.h_0_c is not None:
-                assert len(self.orbital.l[self.orb_type(self.x_name)]) == 6,\
+                assert len(self.orbital.l_num[self.orb_type(self.x_name)]) == 6,\
                     "the chal. doesn't have the right shape for spin-flip term"
-                assert sorted(self.orbital.l[self.orb_type(self.x_name)]) == sorted([1, -1, 0, 1, -1, 0]),\
+                assert sorted(self.orbital.l_num[self.orb_type(self.x_name)]) == sorted([1, -1, 0, 1, -1, 0]),\
                     "the chal. l is wrong for spin-flip"
         self.__soc_eo_flip = pol_bool
 
@@ -1239,7 +1269,7 @@ class AbstractLattice:
         out = re.findall("[^-]+(?:[^-]*)*", h_name_i)
         assert len(out) == 4, "The given string isn't generated by the right function, the length isn't 4"
         out[1] = int(out[1])
-        return tuple(out)
+        return str(out[0]), int(out[1]), str(out[2]), str(out[3])
 
     def _generate_matrices(self):
         a = self.params[self.name]
@@ -1312,7 +1342,7 @@ class AbstractLattice:
         if self.lat4:
             hn = [hn[int(ih/2)] for ih in range(6)]
             n_n_n = [0, 0, 1, 1, 2, 2]
-        n_n = 6 if self.lat4 else 3
+        # n_n = 6 if self.lat4 else 3
         if self.single_orbital:
             for f_i, nf_i in enumerate(fnl):
                 for t_j, nt_j in enumerate(tnl):
@@ -1327,11 +1357,13 @@ class AbstractLattice:
 
     def lattice(self):
         lat = pb.Lattice(a1=self.a1, a2=self.a2)
-
+        m_orbs, m2_orbs = 0, 0
+        c_orbs, c2_orbs = 0, 0
         if self.lattice_params.h_0_m is not None:
             m_orbs = self._m_orbs
             m2_orbs = self._m2_orbs
             h_0_m = self._make_onsite(self.lattice_params.h_0_m, self.m_name, self.lattice_params.lamb_m)
+            n_m, n_c = 0, 0
             if self.soc_eo_flip_used:
                 soc_part_m = np.zeros((5, 5)) * 1j
                 soc_part_m[3:, :3] = self.sz * self.lattice_params.lamb_m * np.array(
@@ -1339,8 +1371,8 @@ class AbstractLattice:
                      [-1j / 2 * np.sqrt(3), -1j / 2, -1 / 2]])
                 soc_part_m[:3, 3:] = -soc_part_m[3:, :3].T
                 reorder_keys = [np.abs(np.array([0, 2, -2, 1, -1]) - key).argmin()
-                                for key in self.orbital.l[self.orb_type(self.m_name)]]
-                soc_part_m = self._reorder(soc_part_m, [reorder_keys] * 2)
+                                for key in self.orbital.l_num[self.orb_type(self.m_name)]]
+                soc_part_m = self._reorder(soc_part_m, (reorder_keys, reorder_keys))
                 h_0_m[:5, 5:] = soc_part_m
                 h_0_m[5:, :5] = soc_part_m.conj().T
             if self.single_orbital:
@@ -1372,6 +1404,7 @@ class AbstractLattice:
             h_0_c = self._make_onsite(self.lattice_params.h_0_c, self.x_name, self.lattice_params.lamb_c)
             c_orbs = self._c_orbs
             c2_orbs = self._c2_orbs
+            n_c = len(c_orbs)
             if self.soc_eo_flip_used:
                 soc_part_c = np.zeros((6, 6)) * 1j
                 soc_part_c[:3, 3:] = self.sz * self.lattice_params.lamb_c * np.array(
@@ -1380,14 +1413,13 @@ class AbstractLattice:
                      [-1 / 2, 1j / 2, 0]])
                 soc_part_c[3:, :3] = -soc_part_c[:3, 3:].T
                 reorder_keys1 = [np.abs(np.array([1, -1, 0]) - key).argmin()
-                                 for key in self.orbital.l[self.orb_type(self.x_name)][:3]]
+                                 for key in self.orbital.l_num[self.orb_type(self.x_name)][:3]]
                 reorder_keys2 = [3 + np.abs(np.array([1, -1, 0]) - key).argmin()
-                                 for key in self.orbital.l[self.orb_type(self.x_name)][3:]]
-                soc_part_c = self._reorder(soc_part_c, [reorder_keys1 + reorder_keys2] * 2)
+                                 for key in self.orbital.l_num[self.orb_type(self.x_name)][3:]]
+                soc_part_c = self._reorder(soc_part_c, (reorder_keys1 + reorder_keys2, reorder_keys1 + reorder_keys2))
                 h_0_c[:6, 6:] = soc_part_c
                 h_0_c[6:, :6] = soc_part_c.conj().T
             if self.single_orbital:
-                n_c = len(c_orbs)
                 for i_c in range(n_c):
                     lat.add_one_sublattice(c_orbs[i_c],
                                            [self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 6],
@@ -1551,9 +1583,13 @@ class AbstractLattice:
                                     h_name="h_3_m")
 
         if self.lattice_params.h_4_m is not None:
-            _, h_4_ma, h_4_mb = self._make_h_angle(self.lattice_params.h_4_m, self.m_name, self.x_name, np.arctan(np.sqrt(3) / 5))
-            cosa = [[-1, -2], [1, 1], [-2, 0]] if not self.lat4 else [[0, -1], [1, -1], [1, 0], [1, 1], [-2, 0], [-1, 0]]
-            cosb = [[-2, -2], [1, 0], [-1, 1]] if not self.lat4 else [[-1, -1], [0, -1], [1, 0], [2, 0], [-1, 0], [-1, 1]]
+            _, h_4_ma, h_4_mb = self._make_h_angle(
+                self.lattice_params.h_4_m, self.m_name, self.x_name, np.arctan(np.sqrt(3) / 5)
+            )
+            cosa = [[-1, -2], [1, 1], [-2, 0]]\
+                if not self.lat4 else [[0, -1], [1, -1], [1, 0], [1, 1], [-2, 0], [-1, 0]]
+            cosb = [[-2, -2], [1, 0], [-1, 1]]\
+                if not self.lat4 else [[-1, -1], [0, -1], [1, 0], [2, 0], [-1, 0], [-1, 1]]
             fnl = (
                 (
                     [[m_i] * 3 for m_i in m_orbs]
@@ -1671,7 +1707,8 @@ class AbstractLattice:
                                     h_name="h_5_c")
 
         if self.lattice_params.h_6_m is not None:
-            cos = [[2, 0], [0, 2], [-2, -2]] if not self.lat4 else [[2, 0], [2, 0], [-1, 1], [-1, 1], [-1, -1], [-1, -1]]
+            cos = [[2, 0], [0, 2], [-2, -2]]\
+                if not self.lat4 else [[2, 0], [2, 0], [-1, 1], [-1, 1], [-1, -1], [-1, -1]]
             fnl = (
                 (
                     [[m_i] * 3 for m_i in m_orbs]
@@ -1694,7 +1731,8 @@ class AbstractLattice:
                                     h_name="h_6_m")
 
         if self.lattice_params.h_6_c is not None:
-            cos = [[2, 0], [0, 2], [-2, -2]] if not self.lat4 else [[2, 0], [2, 0], [-1, 1], [-1, 1], [-1, -1], [-1, -1]]
+            cos = [[2, 0], [0, 2], [-2, -2]]\
+                if not self.lat4 else [[2, 0], [2, 0], [-1, 1], [-1, 1], [-1, -1], [-1, -1]]
             fnl = (
                 (
                     [[c_i] * 3 for c_i in c_orbs]

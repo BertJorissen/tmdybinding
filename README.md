@@ -10,7 +10,7 @@
 * automatic generation of lattice cell with 90-degree corners
 * automatic inclusion of SOC terms
 * automatic generation of hopping terms taking into account the symmetry of the orbital
-* label all the different obrital contributions
+* label all the different orbital contributions
 * fully compatible with [pybinding] and [KITE]
 
 ## Installation
