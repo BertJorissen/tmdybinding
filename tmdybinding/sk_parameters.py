@@ -1,6 +1,62 @@
 from .tmd_abstract_lattice import SKSimpleParametersList, SKParametersList
 
 
+_params_sk_dias_mos2_fitted = SKParametersList(dict(zip(
+    # fitted
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_0_pps",      "v_0_ppp",
+        "v_1_e_pds",    "v_1_e_pdp",    "v_1_o_pds",    "v_1_o_pdp",
+        "v_2_e_dds",    "v_2_e_ddp",    "v_2_e_ddd",    "v_2_e_pps",    "v_2_e_ppp",
+        "v_2_o_ddp",    "v_2_o_ddd",    "v_2_o_pps",    "v_2_o_ppp",
+        "v_5_e_dds",    "v_5_e_ddp",    "v_5_e_ddd",    "v_5_e_pps",    "v_5_e_ppp",
+        "v_5_o_ddp",    "v_5_o_ddd",    "v_5_o_pps",    "v_5_o_ppp"
+    ],
+    [
+        0.31882931,     0.0806,         0.0536,         "MoS2",         0.703,
+        -6.32462197e+00, -4.77732844e+00, -5.90160369e+00, -9.523165605, -12.5025582,
+        5.630393, -2.447044695,
+        4.00851699e+00, -1.59507645e+00,        2.15787943e+00, -1.06942019e+00,
+        -6.58197057e-01,  5.72293847e-01,  2.61828424e-01,  9.92502370e-01, -1.66848188e+00,
+        4.27331648e-02,  1.42165455e-02, 5.74382013e-01, -1.53696505e-01,
+        3.22763559e-02,  5.67853736e-02, -3.79415525e-02,  1.60731513e-01,  1.50517193e-03,
+        7.10141101e-04, 6.55934811e-02, -3.36741023e-02, -2.23077491e-02
+    ]
+)))
+
+_params_sk_rostami_fitted = SKSimpleParametersList(dict(zip(
+    # fitted
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_1_pds",      "v_1_pdp",      "v_2_dds",      "v_2_ddp",      "v_2_ddd",
+        "v_0_pps",      "v_0_ppp",      "v_2_pps",      "v_2_ppp"
+    ],
+    [
+        0.31882931,     0.075,          0.052,          "MoS2",         0.703,
+        -6.2539434,     0.000,          -5.64168266,    -10.24784771,   -16.61743716,
+        3.89201485,     -1.36521723,    -0.73264736,    0.65489363,     0.26205299,
+        0.000,          0.000,          0.73420676,     -1.44859604,
+    ]
+)))
+
+_params_sk_cappelluti_fitted = SKSimpleParametersList(dict(zip(
+    # fitted
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",     "theta",
+        "delta_0",      "delta_1",      "delta_2",      "delta_p",      "delta_z",
+        "v_1_pds",      "v_1_pdp",      "v_2_dds",      "v_2_ddp",      "v_2_ddd",
+        "v_0_pps",      "v_0_ppp",      "v_2_pps",      "v_2_ppp"
+    ],
+    [
+        0.31882931,     0.075,          0.052,          "MoS2",         0.703,
+        -6.2539434,     -7.6674323,     -5.64168266,    -10.24784771,   -9.10842771,
+        3.89201485,     -1.36521723,    -0.73264736,    0.65489363,     0.26205299,
+        7.50900945,     -0.62850624,    0.73420676,     -1.44859604,
+    ]
+)))
+
 _params_sk_cappelluti = SKSimpleParametersList(dict(zip(
     # from https://journals.aps.org/prb/abstract/10.1103/PhysRevB.88.075409
     [
