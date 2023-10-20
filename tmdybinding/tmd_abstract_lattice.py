@@ -54,7 +54,7 @@ class ParametersList:
             *[rf"$u_{u}^{{{i},Mo}}$" for u in ("2", "6") for i in range(3)],
             *[rf"$u_{u}^{{{i},Me}}$" for u in "5" for i in ("0", "1", "3", "5", "6")],
             *[rf"$u_{u}^{{{i},X{r}}}$" for u in "5" for i in ("0", "2", "3", "5", "6") for r in ("e", "o")],
-            *[rf"$u_{u}_{{{i},Mo}}$" for u in "5" for i in ("0", "2")],
+            *[rf"$u_{u}^{{{i},Mo}}$" for u in "5" for i in ("0", "2")],
         ]
 
         self._energy_params_dict: Dict[str, FloatParameter] = dict(zip(

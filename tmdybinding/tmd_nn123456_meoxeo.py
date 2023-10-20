@@ -42,7 +42,7 @@ class TmdNN123456MeoXeo(AbstractLattice):
         h_5_x = self.block_diag(t_m.t_5_xe, t_m.t_5_xo)
         h_6_m = self.block_diag(t_m.t_6_me, t_m.t_6_mo)
         h_6_x = self.block_diag(t_m.t_6_xe, t_m.t_6_xo)
-        keys = ["h_0_m", "h_0_c", "h_1_m", "h_2_m", "h_3_m", "h_4_m", "h_2_c", "h_5_m", "h_5_c", "h_6_m", "h_6_c",
+        keys = ["h_0_m", "h_0_c", "h_1_m", "h_2_m", "h_2_c", "h_3_m", "h_4_m", "h_5_m", "h_5_c", "h_6_m", "h_6_c",
                 "a", "lamb_m", "lamb_c"]
         values = [h_0_m, h_0_x, h_1_m, h_2_m, h_2_x, h_3_m, h_4_m, h_5_m, h_5_x, h_6_m, h_6_x,
                   self.params["a"], self.params["lamb_m"], self.params["lamb_x"]]

@@ -1,7 +1,7 @@
 from .tmd_abstract_lattice import ParametersList
 
 
-_params_sg_liu_2nn_mos2_fitted = ParametersList(dict(zip(
+_liu_2nn_mos2_fitted = ParametersList(dict(zip(
     # fitted
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -15,7 +15,7 @@ _params_sg_liu_2nn_mos2_fitted = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_6nn_mos2_fitted = ParametersList(dict(zip(
+_liu_6nn_mos2_fitted = ParametersList(dict(zip(
     # fitted
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -33,7 +33,7 @@ _params_sg_liu_6nn_mos2_fitted = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_2nn_mos2 = ParametersList(dict(zip(
+_liu_2nn_mos2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -47,7 +47,7 @@ _params_sg_liu_2nn_mos2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_2nn_mose2 = ParametersList(dict(zip(
+_liu_2nn_mose2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -61,7 +61,7 @@ _params_sg_liu_2nn_mose2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_2nn_mote2 = ParametersList(dict(zip(
+_liu_2nn_mote2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -75,7 +75,7 @@ _params_sg_liu_2nn_mote2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_2nn_ws2 = ParametersList(dict(zip(
+_liu_2nn_ws2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -89,7 +89,7 @@ _params_sg_liu_2nn_ws2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_2nn_wse2 = ParametersList(dict(zip(
+_liu_2nn_wse2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -103,7 +103,7 @@ _params_sg_liu_2nn_wse2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_2nn_wte2 = ParametersList(dict(zip(
+_liu_2nn_wte2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -117,7 +117,7 @@ _params_sg_liu_2nn_wte2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_6nn_mos2 = ParametersList(dict(zip(
+_liu_6nn_mos2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -135,7 +135,7 @@ _params_sg_liu_6nn_mos2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_6nn_mose2 = ParametersList(dict(zip(
+_liu_6nn_mose2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -153,7 +153,7 @@ _params_sg_liu_6nn_mose2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_6nn_mote2 = ParametersList(dict(zip(
+_liu_6nn_mote2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -171,7 +171,7 @@ _params_sg_liu_6nn_mote2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_6nn_ws2 = ParametersList(dict(zip(
+_liu_6nn_ws2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -189,7 +189,7 @@ _params_sg_liu_6nn_ws2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_6nn_wse2 = ParametersList(dict(zip(
+_liu_6nn_wse2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -207,7 +207,7 @@ _params_sg_liu_6nn_wse2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_liu_6nn_wte2 = ParametersList(dict(zip(
+_liu_6nn_wte2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -225,7 +225,7 @@ _params_sg_liu_6nn_wte2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_wu = ParametersList(dict(zip(
+_wu = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.91.075310
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -249,7 +249,7 @@ _params_sg_wu = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_fang_mos2 = ParametersList(dict(zip(
+_fang_mos2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -278,7 +278,7 @@ _params_sg_fang_mos2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_fang_ws2 = ParametersList(dict(zip(
+_fang_ws2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -307,7 +307,7 @@ _params_sg_fang_ws2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_fang_mose2 = ParametersList(dict(zip(
+_fang_mose2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -336,7 +336,7 @@ _params_sg_fang_mose2 = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_fang_wse2 = ParametersList(dict(zip(
+_fang_wse2 = ParametersList(dict(zip(
     # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -366,7 +366,7 @@ _params_sg_fang_wse2 = ParametersList(dict(zip(
 )))
 
 
-_params_sg_wu_fitted = ParametersList(dict(zip(
+_wu_fitted = ParametersList(dict(zip(
     #  fitted
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -390,7 +390,7 @@ _params_sg_wu_fitted = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_fang_mos2_fitted = ParametersList(dict(zip(
+_fang_mos2_fitted = ParametersList(dict(zip(
     # from fitted
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -419,7 +419,7 @@ _params_sg_fang_mos2_fitted = ParametersList(dict(zip(
     ]
 )))
 
-_params_sg_jorissen_mos2_fitted = ParametersList(dict(zip(
+_jorissen_mos2 = ParametersList(dict(zip(
     # from fitted
     [
         "a",            "lamb_m",       "lamb_x",       "material",
@@ -439,3 +439,91 @@ _params_sg_jorissen_mos2_fitted = ParametersList(dict(zip(
         0.79492166,     -0.24849791,    0.16415515,     -0.0019305,     -0.2934992,     -0.17447978,
     ]
 )))
+
+_all_mos2 = ParametersList(dict(zip(
+    # from fitted
+    [
+        "a",            "lamb_m",       "lamb_x",       "material",
+        "eps_0_x_e", "eps_1_x_e", "eps_0_m_e", "eps_1_m_e",
+        "u_1_0_m_e", "u_1_1_m_e", "u_1_2_m_e", "u_1_3_m_e", "u_1_4_m_e",
+        "u_2_0_m_e", "u_2_1_m_e", "u_2_2_m_e", "u_2_3_m_e", "u_2_4_m_e", "u_2_5_m_e",
+        "u_2_0_x_e", "u_2_1_x_e", "u_2_2_x_e", "u_2_3_x_e", "u_2_4_x_e", "u_2_5_x_e",
+        "u_3_0_m_e", "u_3_1_m_e", "u_3_2_m_e", "u_3_3_m_e", "u_3_4_m_e",
+        "u_4_0_m_e", "u_4_1_m_e", "u_4_2_m_e", "u_4_3_m_e", "u_4_4_m_e",
+        "u_5_0_m_e", "u_5_1_m_e", "u_5_3_m_e", "u_5_5_m_e", "u_5_6_m_e",
+        "u_5_0_x_e", "u_5_2_x_e", "u_5_3_x_e", "u_5_5_x_e", "u_5_6_x_e",
+        "u_6_0_m_e", "u_6_1_m_e", "u_6_2_m_e", "u_6_3_m_e", "u_6_4_m_e", "u_6_5_m_e",
+        "u_6_0_x_e", "u_6_1_x_e", "u_6_2_x_e", "u_6_3_x_e", "u_6_4_x_e", "u_6_5_x_e",
+        "eps_0_x_o", "eps_1_x_o", "eps_0_m_o",
+        "u_1_0_m_o", "u_1_1_m_o", "u_1_2_m_o",
+        "u_2_0_m_o", "u_2_1_m_o", "u_2_2_m_o",
+        "u_2_0_x_o", "u_2_1_x_o", "u_2_2_x_o", "u_2_3_x_o", "u_2_4_x_o", "u_2_5_x_o",
+        "u_3_0_m_o", "u_3_1_m_o", "u_3_2_m_o",
+        "u_4_0_m_o", "u_4_1_m_o", "u_4_2_m_o",
+        "u_5_0_m_o", "u_5_2_m_o",
+        "u_5_0_x_o", "u_5_2_x_o", "u_5_3_x_o", "u_5_5_x_o", "u_5_6_x_o",
+        "u_6_0_m_o", "u_6_1_m_o", "u_6_2_m_o",
+        "u_6_0_x_o", "u_6_1_x_o", "u_6_2_x_o", "u_6_3_x_o", "u_6_4_x_o", "u_6_5_x_o",
+
+    ],
+    [
+        0.3189552789,    0.0836,         0.0556,         "MoS2",
+        -5.85535089e+00, -6.55002800e+00, -4.11031485e+00, -3.50757649e+00,
+        1.35813632e+00, -9.39814832e-01, 6.36315099e-01, -8.65807106e-01, -9.40867659e-01,
+        -2.88698499e-01, 5.08367498e-01, 1.17988537e-01, -5.53682676e-01, -2.28504870e-01, 2.29751185e-01,
+        9.10803109e-01, -2.24402452e-02, 9.61186364e-02, 3.12400382e-03, -2.79471707e-02, -1.84215453e-01,
+        8.19856098e-02, -1.36942029e-01, -2.32226175e-01, -7.56614354e-02, -2.18453245e-01,
+        -1.05966154e-02, 8.18751691e-04, -3.19735380e-02, 1.26355104e-03, 2.88724090e-02,
+        5.40497529e-04, -7.74247515e-03, 3.39424467e-02, 9.11337396e-03, -5.23766300e-03,
+        -1.31303857e-02, -2.16101527e-05, 2.18892380e-03, 2.85609057e-03, -5.35732464e-03,
+        2.67882896e-04, -2.91376849e-02, 1.15194554e-04, -5.58489128e-02, 6.08538922e-02, 7.25848009e-02,
+        4.85565562e-02, 6.95112283e-02, 6.91879264e-03, 3.04557146e-02, 6.86382071e-02, -1.97025368e-03,
+        -4.96490884e+00, -4.73278639e+00, -2.81154976e+00,
+        -7.82104656e-01, 2.13753469e+00, -1.45504793e+00,
+        -2.62365349e-01, 2.15615929e-01, 1.02434139e-02,
+        8.49785326e-01, 7.06226486e-02, -4.13053364e-02, -1.12769330e-01, 4.11554466e-02, -1.73215911e-01,
+        3.14319913e-02, -6.35638918e-02, 5.80612006e-02,
+        -3.35710022e-02, 6.33229092e-02, 5.05315655e-02,
+        -6.50386867e-02, 1.28907505e-01,
+        -2.72518553e-02, -8.45574502e-03, -7.19418647e-02, 9.94491714e-03, -2.39873085e-02,
+        4.30630790e-02, -5.98009509e-02, -1.26888729e-01,
+        7.30968724e-02, 4.37471809e-02, 9.40970153e-03, 2.87364009e-02, -2.88204369e-02, 2.28460254e-02
+    ]
+)))
+
+liu2 = {
+    "MoS2": _liu_2nn_mos2,
+    "MoSe2": _liu_2nn_mose2,
+    "MoTe2": _liu_2nn_mote2,
+    "WS2": _liu_2nn_ws2,
+    "WSe2": _liu_2nn_wse2,
+    "WTe2": _liu_2nn_wte2,
+    "fitted": {"MoS2": _liu_2nn_mos2_fitted}
+}
+
+liu6 = {
+    "MoS2": _liu_6nn_mos2,
+    "MoSe2": _liu_6nn_mose2,
+    "MoTe2": _liu_6nn_mote2,
+    "WS2": _liu_6nn_ws2,
+    "WSe2": _liu_6nn_wse2,
+    "WTe2": _liu_6nn_wte2,
+    "fitted": {"MoS2": _liu_6nn_mos2_fitted}
+}
+
+wu = {
+    "MoS2": _wu,
+    "fitted": {"MoS2": _wu_fitted}
+}
+
+fang = {
+    "MoS2": _fang_mos2,
+    "MoSe2": _fang_mose2,
+    "WS2": _fang_ws2,
+    "WSe2": _fang_wse2,
+    "fitted": {"MoS2": _fang_mos2_fitted}
+}
+
+jorissen = {
+    "MoS2": _jorissen_mos2
+}
