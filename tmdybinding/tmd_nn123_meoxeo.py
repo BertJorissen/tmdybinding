@@ -1,6 +1,7 @@
 """Tight-binding models for group 4 transition metal dichalcogenides (tmd), 11 band."""
 from .tmd_abstract_lattice import AbstractLattice
 from .tmd_matrices import TmdMatrices
+from .sg_parameters import fang
 
 
 class TmdNN123MeoXeo(AbstractLattice):
@@ -20,6 +21,7 @@ class TmdNN123MeoXeo(AbstractLattice):
                                          "X": ["pxe", "pye", "pze", "pxo", "pyo", "pzo"]},
                                 "group": {"M": [0, 1, 1, 2, 2], "X": [0, 0, 1, 2, 2, 3]}}
         super().__init__(orbital=lattice_orbital_dict, n_v=6, n_b=11)
+        self.params = fang["MoS2"]
         self.lattice_name = "11 bands 3NN model"
         [setattr(self, var, kwargs[var]) for var in [*kwargs]]
 

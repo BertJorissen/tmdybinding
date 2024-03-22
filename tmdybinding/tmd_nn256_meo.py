@@ -1,6 +1,7 @@
 """Tight-binding models for group 1 transition metal dichalcogenides (tmd), 5 band."""
 from .tmd_abstract_lattice import AbstractLattice
 from .tmd_matrices import TmdMatrices
+from .sg_parameters import wu
 
 
 class TmdNN256Meo(AbstractLattice):
@@ -23,6 +24,7 @@ class TmdNN256Meo(AbstractLattice):
         lattice_orbital_dict = {"l": {"M": [0, 2, -2, 1, -1]},
                                 "orbs": {"M": ["dz2", "dx2y2", "dxy", "dxz", "dyz"]}}
         super().__init__(orbital=lattice_orbital_dict, n_v=0, n_b=5)
+        self.params = wu["MoS2"]
         self.lattice_name = "Liu/Wu 5 bands 6NN model"
         [setattr(self, var, kwargs[var]) for var in [*kwargs]]
 

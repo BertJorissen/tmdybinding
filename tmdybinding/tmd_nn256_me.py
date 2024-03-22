@@ -1,6 +1,7 @@
 """Tight-binding models for group 1 transition metal dichalcogenides (tmd), 5 band."""
 from .tmd_abstract_lattice import AbstractLattice
 from .tmd_matrices import TmdMatrices
+from .sg_parameters import liu6
 
 
 class TmdNN256Me(AbstractLattice):
@@ -29,10 +30,12 @@ class TmdNN256Me(AbstractLattice):
                                 "orbs": {"M": ["dz2", "dx2y2", "dxy"]},
                                 "group": {"M": [0, 1, 1]}}
         super().__init__(orbital=lattice_orbital_dict, n_v=0, n_b=3)
+        self.params = liu6["MoS2"]
         self.lattice_name = "3 bands 6NN model"
         [setattr(self, var, kwargs[var]) for var in [*kwargs]]
 
     def _generate_matrices(self):
+        print(f"ok, {self.name}")
         t_m = TmdMatrices(self.params)
         h_0_m = t_m.e_me
         h_2_m = t_m.t_2_me

@@ -27,8 +27,6 @@ class ParametersList:
     """Class to save the parameters"""
 
     def __init__(self, input_dict: Optional[Dict[str, Union[float, str]]] = None):
-
-        self._general_params = ["a", "lamb_m", "lamb_x", "material"]
         energy_params = [
             *[f"eps_{i}_x_{r}" for i in range(2) for r in ("e", "o")],
             *[f"eps_{i}_m_{r}" for i in "0" for r in ("e", "o")],
@@ -75,46 +73,65 @@ class ParametersList:
             self.from_dict(input_dict)
 
     @property
+    def _unique_params_dict(self) -> List[dict]:
+        return [self._general_params_dict, self._energy_params_dict]
+
+    @property
+    def _protected_params_dict(self) -> Optional[List[dict]]:
+        return None
+
+    @property
+    def _all_params_dict(self) -> List[dict]:
+        return self._unique_params_dict + (self._protected_params_dict or [])
+
+    @property
     def _allowed_params(self):
-        return [*self._general_params_dict, *self._energy_params_dict]
+        return [param_key for param_dict in self._all_params_dict for param_key in param_dict.keys()]
 
     def _check_key(self, key) -> bool:
         if key not in self._allowed_params:
-            warnings.warn("Variable {0} is not an expected variable, it is ignored".format(
-                key
-            ), UserWarning, stacklevel=2)
+            warnings.warn(f"Variable {key} is not an expected variable, it is ignored", UserWarning, stacklevel=2)
             return False
         return True
 
     def __setitem__(self, key, value):
         if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                self._general_params_dict[key].param = value
-            elif key in [*self._energy_params_dict]:
-                self._energy_params_dict[key].param = value
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
+            for param_dict in self._unique_params_dict:
+                if key in param_dict.keys():
+                    param_dict[key].param = value
+                    return
+            if self._protected_params_dict is not None:
+                for param_dict in self._protected_params_dict:
+                    if key in param_dict.keys():
+                        param_dict[key].param = value
+                        warnings.warn(f"The variable {key} is read-only, you should not change it.", UserWarning, stacklevel=2)
+                        return
+            warnings.warn(f"This should not happen, {key} should be a valid key.", UserWarning, stacklevel=2)
 
     def __getitem__(self, item) -> Union[float, str]:
         return self.get_param(item) or 0.0
 
+    def get_dict(self) -> dict:
+        out_dict = {}
+        for param_dict in self._unique_params_dict:
+            for key, item in param_dict.items():
+                if item.param is not None:
+                    out_dict[key] = item.param
+        return out_dict
+
     def get_param(self, key):
         if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                return self._general_params_dict[key].param
-            elif key in [*self._energy_params_dict]:
-                return self._energy_params_dict[key].param
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
+            for param_dict in self._all_params_dict:
+                if key in param_dict.keys():
+                    return param_dict[key].param
+            warnings.warn(f"This should not happen, {key} should be a valid key.", UserWarning, stacklevel=2)
 
-    def get_name(self, key):
+    def get_name(self, key) -> str:
         if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                return self._general_params_dict[key].name
-            elif key in [*self._energy_params_dict]:
-                return self._energy_params_dict[key].name
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
+            for param_dict in self._all_params_dict:
+                if key in param_dict.keys():
+                    return param_dict[key].name
+            warnings.warn("This should not happen, {0} should be a valid key.".format(key))
 
     def from_dict(self, input_dict: Dict[str, Union[float, str]]):
         """Function to set the variables with a dict"""
@@ -129,10 +146,24 @@ class SKParametersList(ParametersList):
         super().__init__(None)
         self._recalculate_params_bool: bool = True
         self._tan_theta: Optional[float] = None
-        sk_params = [
+
+        onsite_sk_params = [
             "theta",
             *[f"delta_{r}" for r in ("p", "z", "0", "1", "2")],
-            *[f"v_0_pp{r}" for r in ("s", "p")],
+            *[f"v_0_pp{r}" for r in ("s", "p")]
+        ]
+        onsite_sk_params_names = [
+            r"$\theta$",
+            *[rf"$\delta_{r}$" for r in ("p", "z", "0", "1", "2")],
+            *[rf"$V^0_{{pp{r}}}$" for r in (r"\sigma", r"\pi")],
+        ]
+
+        self._onsite_sk_params_dict: dict = dict(zip(
+            onsite_sk_params,
+            [FloatParameter(name=p_name) for p_name in onsite_sk_params_names]
+        ))
+
+        sk_params = [
             *[f"v_{n}_{r}_pd{i}" for n in ("1", "3", "4") for r in ("e", "o") for i in ("s", "p")],
             *[f"v_{n}_{r}_pp{i}{t}" for n in ("2", "5", "6")
               for r in ("e", "o") for i in ("s", "p") for t in ("", "_tb")],
@@ -141,9 +172,6 @@ class SKParametersList(ParametersList):
         ]
 
         sk_params_names = [
-            r"$\theta$",
-            *[rf"$\delta_{r}$" for r in ("p", "z", "0", "1", "2")],
-            *[rf"$V^0_{{pp{r}}}$" for r in (r"\sigma", r"\pi")],
             *[rf"$V^{{{n}_{r}}}_{{pd{i}}}$" for n in ("1", "3", "4") for r in ("e", "o") for i in (r"\sigma", r"\pi")],
             *[rf"$V^{{{n}_{r}}}_{{pp{i}{t}}}$" for n in ("2", "5", "6")
               for r in ("e", "o") for i in (r"\sigma", r"\pi") for t in ("", ",tb")],
@@ -154,8 +182,21 @@ class SKParametersList(ParametersList):
             sk_params,
             [FloatParameter(name=p_name) for p_name in sk_params_names]
         ))
+
         if input_dict is not None:
             self.from_dict(input_dict)
+
+    @property
+    def _unique_params_dict(self) -> List[dict]:
+        return [self._general_params_dict, self._onsite_sk_params_dict, self._sk_params_dict]
+
+    @property
+    def _protected_params_dict(self) -> Optional[List[dict]]:
+        return [self._energy_params_dict]
+
+    def __setitem__(self, key, value):
+        super().__setitem__(key, value)
+        self._recalculate_params()
 
     def from_dict(self, input_dict: Dict[str, Union[float, str]]):
         self._recalculate_params_bool = False
@@ -488,44 +529,6 @@ class SKParametersList(ParametersList):
         else:
             return [None, None, None]
 
-    @property
-    def _allowed_params(self):
-        return [*self._general_params_dict, *self._energy_params_dict, *self._sk_params_dict]
-
-    def __setitem__(self, key, value):
-        if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                self._general_params_dict[key].param = value
-            elif key in [*self._sk_params_dict]:
-                self._sk_params_dict[key].param = value
-                self._recalculate_params()
-            elif key in [*self._energy_params_dict]:
-                warnings.warn("The variable {0} is set by SK functions and is read-only, don't change it.".format(key))
-                self._energy_params_dict[key].param = value
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
-
-    def get_param(self, key):
-        if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                return self._general_params_dict[key].param
-            elif key in [*self._energy_params_dict]:
-                return self._energy_params_dict[key].param
-            elif key in [*self._sk_params_dict]:
-                return self._sk_params_dict[key].param
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
-
-    def get_name(self, key):
-        if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                return self._general_params_dict[key].name
-            elif key in [*self._energy_params_dict]:
-                return self._energy_params_dict[key].name
-            elif key in [*self._sk_params_dict]:
-                return self._sk_params_dict[key].name
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
 
 
 class SKSimpleParametersList(SKParametersList):
@@ -546,11 +549,7 @@ class SKSimpleParametersList(SKParametersList):
             sk_simple_params,
             [FloatParameter(name=p_name) for p_name in sk_simple_params_names]
         ))
-        self._sk_params_changable = [
-            "theta",
-            *[f"delta_{r}" for r in ("p", "z", "0", "1", "2")],
-            *[f"v_0_pp{r}" for r in ("s", "p")]
-        ]
+
         if input_dict is not None:
             self.from_dict(input_dict)
 
@@ -616,54 +615,12 @@ class SKSimpleParametersList(SKParametersList):
             super()._recalculate_params()
 
     @property
-    def _allowed_params(self):
-        return [*self._general_params_dict, *self._energy_params_dict,
-                *self._sk_params_dict, *self._sk_simple_params_dict]
+    def _unique_params_dict(self) -> List[dict]:
+        return [self._general_params_dict, self._onsite_sk_params_dict, self._sk_simple_params_dict]
 
-    def __setitem__(self, key, value):
-        if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                self._general_params_dict[key].param = value
-            elif key in [*self._sk_simple_params_dict]:
-                self._sk_simple_params_dict[key].param = value
-                self._recalculate_params()
-            elif key in [*self._sk_params_dict]:
-                if not (key in self._sk_params_changable):
-                    warnings.warn(
-                        "The variable {0} is set by SK functions and is read-only, don't change it.".format(key))
-                self._sk_params_dict[key].param = value
-                self._recalculate_params()
-            elif key in [*self._energy_params_dict]:
-                warnings.warn("The variable {0} is set by SK functions and is read-only, don't change it.".format(key))
-                self._energy_params_dict[key].param = value
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
-
-    def get_param(self, key):
-        if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                return self._general_params_dict[key].param
-            elif key in [*self._energy_params_dict]:
-                return self._energy_params_dict[key].param
-            elif key in [*self._sk_params_dict]:
-                return self._sk_params_dict[key].param
-            elif key in [*self._sk_simple_params_dict]:
-                return self._sk_simple_params_dict[key].param
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
-
-    def get_name(self, key):
-        if self._check_key(key):
-            if key in [*self._general_params_dict]:
-                return self._general_params_dict[key].name
-            elif key in [*self._energy_params_dict]:
-                return self._energy_params_dict[key].name
-            elif key in [*self._sk_params_dict]:
-                return self._sk_params_dict[key].name
-            elif key in [*self._sk_simple_params_dict]:
-                return self._sk_simple_params_dict[key].name
-            else:
-                warnings.warn("This should not happen, {0} should be a valid key.".format(key))
+    @property
+    def _protected_params_dict(self) -> Optional[List[dict]]:
+        return [self._sk_params_dict, self._energy_params_dict]
 
 
 class LatticeParams:
@@ -1155,7 +1112,6 @@ class AbstractLattice:
     def params(self, params: ParametersList):
         self.__params = params
         self.name = self.params["material"]
-        self._generate_matrices()
 
     @property
     def lattice_name(self) -> str:

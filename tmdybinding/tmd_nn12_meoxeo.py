@@ -1,6 +1,7 @@
 """Tight-binding models for group 1 transition metal dichalcogenides (tmd), 6 band."""
 from .tmd_abstract_lattice import AbstractLattice
 from .tmd_matrices import TmdMatrices
+from .sk_parameters import _params_sk_cappelluti_fitted
 
 
 class TmdNN12MeoXeo(AbstractLattice):
@@ -10,6 +11,7 @@ class TmdNN12MeoXeo(AbstractLattice):
                                          "X": ["pxe", "pye", "pze", "pxo", "pyo", "pzo"]},
                                 "group": {"M": [0, 1, 1, 2, 2], "X": [0, 0, 1, 2, 2, 3]}}
         super().__init__(orbital=lattice_orbital_dict, n_v=6, n_b=11)
+        self.params = _params_sk_cappelluti_fitted
         self.lattice_name = "11 bands model"
         [setattr(self, var, kwargs[var]) for var in [*kwargs]]
 

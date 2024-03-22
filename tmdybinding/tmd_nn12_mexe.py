@@ -1,6 +1,7 @@
 """Tight-binding models for transition metal dichalcogenides (tmd), 6 band."""
 from .tmd_abstract_lattice import AbstractLattice
 from .tmd_matrices import TmdMatrices
+from .sg_parameters import jorissen
 
 
 class TmdNN12MeXe(AbstractLattice):
@@ -29,6 +30,7 @@ class TmdNN12MeXe(AbstractLattice):
                                          "X": ["pxe", "pye", "pze"]},
                                 "group": {"M": [0, 2, 2], "X": [0, 0, 1]}}
         super().__init__(orbital=lattice_orbital_dict, n_v=3, n_b=6)
+        self.params = jorissen["MoS2"]
         self.lattice_name = "6 bands model"
         [setattr(self, var, kwargs[var]) for var in [*kwargs]]
 
