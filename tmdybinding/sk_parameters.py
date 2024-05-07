@@ -449,3 +449,60 @@ _params_sk_dias_wse2 = SKParametersList(dict(zip(
         0.0096,         0.0140,         -0.0451,        0.0113
     ]
 )))
+
+rostami = {
+    "MoS2": _params_sk_rostami,
+    "fitted": {"MoS2": _params_sk_rostami_fitted}
+}
+
+dias = {
+    "MoS2": _params_sk_dias_mos2,
+    "MoSe2": _params_sk_dias_mose2,
+    "MoTe2": _params_sk_dias_mote2,
+    "WS2": _params_sk_dias_ws2,
+    "WSe2": _params_sk_dias_wse2,
+    "fitted": {"MoS2": _params_sk_dias_mos2_fitted}
+}
+
+cappelluti = {
+    "MoS2": _params_sk_cappelluti,
+    "fitted": {"MoS2": _params_sk_cappelluti_fitted}
+}
+
+roldan = {
+    "MoS2": _params_sk_roldan_mos2,
+    "WS2": _params_sk_roldan_ws2
+}
+
+ridolfi = {
+    "MoS2": {
+        "normal": _params_sk_ridolfi,
+        "vb": _params_sk_ridolfi_vb,
+        "minimal": _params_sk_ridolfi_minimal
+    }
+}
+
+venkateswarlu = {
+    "MoS2": _params_sk_venkateswarlu
+}
+
+silva_guillen = {
+    "MoS2": _params_sk_silva_guillen_mos2,
+    "MoSe2": _params_sk_silva_guillen_mose2,
+    "WS2": _params_sk_silva_guillen_ws2,
+    "WSe2": _params_sk_silva_guillen_wse2
+}
+
+pearce = {
+    "MoS2": _params_sk_pearce
+}
+
+bieniek = {
+    "MoS2": _params_sk_bieniek
+}
+
+abdi = {
+    "MoS2": _params_sk_abdi_mos2,
+    "MoSe2": _params_sk_abdi_mose2,
+    "WS2": _params_sk_abdi_wse2
+}

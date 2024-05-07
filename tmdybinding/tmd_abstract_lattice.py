@@ -1235,7 +1235,7 @@ class AbstractLattice:
 
     @staticmethod
     def _ham(h: np.ndarray, ur_l: np.ndarray, ur_r: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-        return h, ur_l.T.dot(h.dot(ur_r)), ur_l.dot(h.dot(ur_r.T))
+        return h, ur_l.dot(h.dot(ur_r.T)), ur_l.T.dot(h.dot(ur_r))
 
     @staticmethod
     def _reorder(matrix: np.ndarray, keys: Tuple[List[int], List[int]]) -> np.ndarray:
@@ -1341,7 +1341,7 @@ class AbstractLattice:
                         lat.register_hopping_energies(dict([(h_name, h_0_m[i_m, j_m])]))
                         lat.add_one_hopping([0, 0], m_orbs[i_m], m_orbs[j_m], h_name)
             else:
-                lat.add_one_sublattice(self.m_name, [0, 0], h_0_m.T)
+                lat.add_one_sublattice(self.m_name, [0, 0], h_0_m)
             if self.lat4:
                 if self.single_orbital:
                     for i_m in range(n_m):
@@ -1354,7 +1354,7 @@ class AbstractLattice:
                 else:
                     lat.add_one_sublattice(self.m_name + "2",
                                            [self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 2],
-                                           h_0_m.T)
+                                           h_0_m)
 
         if self.lattice_params.h_0_c is not None:
             h_0_c = self._make_onsite(self.lattice_params.h_0_c, self.x_name, self.lattice_params.lamb_c)
@@ -1388,7 +1388,7 @@ class AbstractLattice:
             else:
                 lat.add_one_sublattice(self.x_name,
                                        [self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 6],
-                                       h_0_c.T)
+                                       h_0_c)
 
             if self.lat4:
                 if self.single_orbital:
@@ -1404,7 +1404,7 @@ class AbstractLattice:
                 else:
                     lat.add_one_sublattice(self.x_name + "2",
                                            [0, self.lattice_params.a * 2 * np.sqrt(3) / 3],
-                                           h_0_c.T)
+                                           h_0_c)
 
         if self.lattice_params.h_1_m is not None:
             cos = [[-1, -1], [0, 0], [-1, 0]] if not self.lat4 else [[0, -1], [0, 0], [0, 0], [1, 0], [-1, 0], [0, 0]]
