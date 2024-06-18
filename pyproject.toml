@@ -1,14 +1,12 @@
 [project]
 name = "tmdybinding"
-version = "0.0.2"
+version = "0.1.0"
 authors = [
     {name="Bert Jorissen", email="info@bertjorissen.be"}
 ]
-description = "Tight-binding lattices for TMDs for the Pybinding-package, Documentation: https://bertjorissen.github.io/tmdybinding (c) 2022-2023"
+description = "Tight-binding lattices for TMDs for the Pybinding-package, Documentation: https://bertjorissen.github.io/tmdybinding (c) 2022-2024"
 readme = "README.md"
 dependencies = [
-    "numpy>=1.12",
-    "pytest>=5.0",
     "pybinding>=0.9"
 ]
 requires-python = ">=3.8"
@@ -23,6 +21,7 @@ classifiers = [
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
 ]
 keywords = [
     "pybinding",

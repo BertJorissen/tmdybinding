@@ -35,7 +35,6 @@ class TmdNN256Me(AbstractLattice):
         [setattr(self, var, kwargs[var]) for var in [*kwargs]]
 
     def _generate_matrices(self):
-        print(f"ok, {self.name}")
         t_m = TmdMatrices(self.params)
         h_0_m = t_m.e_me
         h_2_m = t_m.t_2_me

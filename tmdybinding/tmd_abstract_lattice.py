@@ -131,7 +131,7 @@ class ParametersList:
             for param_dict in self._all_params_dict:
                 if key in param_dict.keys():
                     return param_dict[key].name
-            warnings.warn("This should not happen, {0} should be a valid key.".format(key))
+            warnings.warn(f"This should not happen, {key} should be a valid key.", UserWarning, stacklevel=2)
 
     def from_dict(self, input_dict: Dict[str, Union[float, str]]):
         """Function to set the variables with a dict"""
