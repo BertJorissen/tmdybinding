@@ -15,11 +15,13 @@ class Parameter:
 
 @dataclass
 class FloatParameter(Parameter):
+    """Class to store one separate float parameter"""
     param: Optional[float] = None
 
 
 @dataclass
 class StringParameter(Parameter):
+    """Class to store one separate string parameter"""
     param: Optional[str] = None
 
 
@@ -1053,15 +1055,10 @@ class LatticeOrbitals:
 class AbstractLattice:
     r"""Abstract class for a tmd-lattice
 
-    Parameters
-    ----------
-    name : str
-        Name of the tmd to model.
-    params : Optional[dict]
-        Replace or add new material parameters. The dictionary entries must be
-        in the format `"name": [ a,   ...]
-    sz : float
-        Z-component of the spin degree of freedom
+    Attributes:
+        name (str): Name of the TMD to model.
+        params (Optional[dict]): Replace or add new material parameters. The dictionary entries must be in the format `"name": [ a,   ...]
+        sz (float): Z-component of the spin degree of freedom
     """
     def __init__(self, **kwargs):
         self.lattice_params = LatticeParams()

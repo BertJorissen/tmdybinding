@@ -1,3 +1,4 @@
+"""The parameters used in the Symmetry-Group models for TMDs."""
 from .tmd_abstract_lattice import ParametersList
 
 

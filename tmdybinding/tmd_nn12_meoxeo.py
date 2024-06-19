@@ -5,6 +5,7 @@ from .sk_parameters import _params_sk_cappelluti_fitted
 
 
 class TmdNN12MeoXeo(AbstractLattice):
+    """class"""
     def __init__(self, **kwargs):
         lattice_orbital_dict = {"l": {"M": [0, 2, -2, 1, -1], "X": [1, -1, 0, 1, -1, 0]},
                                 "orbs": {"M": ["dz2", "dx2y2", "dxy", "dxz", "dyz"],

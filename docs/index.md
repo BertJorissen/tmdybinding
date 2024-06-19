@@ -40,10 +40,10 @@ for `"MoS2"` in a hexagonal lattice without SOC, for the specific model used in 
 sixth-nearest neighbour hopping (in their paper this is described as the third-nearest neighbour hopping, as they only
 consider the metal `d`-orbitals):
 ```python
-import tmdybinding as td
+import tmdybinding as tmdy
 
 # make the lattice object
-lat = td.TmdNN256Me(params=td.liu6["MoS2"]).lattice()
+lat = tmdy.TmdNN256Me(params=tmdy.liu6["MoS2"]).lattice()
 
 # make a figure with the lattice
 lat.plot()
@@ -60,10 +60,10 @@ lat.plot()
 Below is a small example of how to use the code for the 5-band model from Liu/Wu:
 ```python
 import pybinding as pb
-import tmdybinding as td
+import tmdybinding as tmdy
 
 # get the parameters
-lat = td.TmdNN256Meo(params=td.wu["MoS2"]).lattice()
+lat = tmdy.TmdNN256Meo(params=tmdy.wu["MoS2"]).lattice()
 model = pb.Model(lat, pb.translational_symmetry())
 bz = lat.brillouin_zone()
 bands = pb.solver.lapack(model).calc_bands(

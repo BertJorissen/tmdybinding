@@ -1,4 +1,4 @@
-"""Models for tmd"""
+"""Tight-binding lattices for TMDs for the Pybinding-package."""
 from .tmd_nn256_meo import *
 from .tmd_nn12_meoxeo import *
 from .tmd_nn123_meoxeo import *
