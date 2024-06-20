@@ -11,6 +11,7 @@ def tests():
     import pathlib
     import os
     from pybinding.utils.misc import cd
+    import pybinding as pb
 
     module_path = pathlib.Path(__file__).parent
 
