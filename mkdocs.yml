@@ -18,7 +18,6 @@ nav:
     - Possible parameters: "documentation/parameters.md"
     - API: "documentation/api.md"
   - About:
-    - "api.md"
     - README.md: 'about/README.md'
     - LICENSE.md: 'about/LICENSE.md'
     - changelog.md: 'about/changelog.md'
