@@ -30,29 +30,29 @@ class ParametersList:
 
         Parameters:
             input_dict (Optional[Dict[str, Union[float, str]]]): The parameters for the TMD lattice.
-            The keys are the names of the parameters and the values are the values of the parameters.
-            The keys are:
-            `a`,            `lamb_m`,       `lamb_x`,       `material`,
-            `eps_0_x_e`, `eps_1_x_e`, `eps_0_m_e`, `eps_1_m_e`,
-            `u_1_0_m_e`, `u_1_1_m_e`, `u_1_2_m_e`, `u_1_3_m_e`, `u_1_4_m_e`,
-            `u_2_0_m_e`, `u_2_1_m_e`, `u_2_2_m_e`, `u_2_3_m_e`, `u_2_4_m_e`, `u_2_5_m_e`,
-            `u_2_0_x_e`, `u_2_1_x_e`, `u_2_2_x_e`, `u_2_3_x_e`, `u_2_4_x_e`, `u_2_5_x_e`,
-            `u_3_0_m_e`, `u_3_1_m_e`, `u_3_2_m_e`, `u_3_3_m_e`, `u_3_4_m_e`,
-            `u_4_0_m_e`, `u_4_1_m_e`, `u_4_2_m_e`, `u_4_3_m_e`, `u_4_4_m_e`,
-            `u_5_0_m_e`, `u_5_1_m_e`, `u_5_3_m_e`, `u_5_5_m_e`, `u_5_6_m_e`,
-            `u_5_0_x_e`, `u_5_2_x_e`, `u_5_3_x_e`, `u_5_5_x_e`, `u_5_6_x_e`,
-            `u_6_0_m_e`, `u_6_1_m_e`, `u_6_2_m_e`, `u_6_3_m_e`, `u_6_4_m_e`, `u_6_5_m_e`,
-            `u_6_0_x_e`, `u_6_1_x_e`, `u_6_2_x_e`, `u_6_3_x_e`, `u_6_4_x_e`, `u_6_5_x_e`,
-            `eps_0_x_o`, `eps_1_x_o`, `eps_0_m_o`,
-            `u_1_0_m_o`, `u_1_1_m_o`, `u_1_2_m_o`,
-            `u_2_0_m_o`, `u_2_1_m_o`, `u_2_2_m_o`,
-            `u_2_0_x_o`, `u_2_1_x_o`, `u_2_2_x_o`, `u_2_3_x_o`, `u_2_4_x_o`, `u_2_5_x_o`,
-            `u_3_0_m_o`, `u_3_1_m_o`, `u_3_2_m_o`,
-            `u_4_0_m_o`, `u_4_1_m_o`, `u_4_2_m_o`,
-            `u_5_0_m_o`, `u_5_2_m_o`,
-            `u_5_0_x_o`, `u_5_2_x_o`, `u_5_3_x_o`, `u_5_5_x_o`, `u_5_6_x_o`,
-            `u_6_0_m_o`, `u_6_1_m_o`, `u_6_2_m_o`,
-            `u_6_0_x_o`, `u_6_1_x_o`, `u_6_2_x_o`, `u_6_3_x_o`, `u_6_4_x_o` and `u_6_5_x_o`
+                The keys are the names of the parameters and the values are the values of the parameters.
+                The keys are:
+                `a`,            `lamb_m`,       `lamb_x`,       `material`,
+                `eps_0_x_e`, `eps_1_x_e`, `eps_0_m_e`, `eps_1_m_e`,
+                `u_1_0_m_e`, `u_1_1_m_e`, `u_1_2_m_e`, `u_1_3_m_e`, `u_1_4_m_e`,
+                `u_2_0_m_e`, `u_2_1_m_e`, `u_2_2_m_e`, `u_2_3_m_e`, `u_2_4_m_e`, `u_2_5_m_e`,
+                `u_2_0_x_e`, `u_2_1_x_e`, `u_2_2_x_e`, `u_2_3_x_e`, `u_2_4_x_e`, `u_2_5_x_e`,
+                `u_3_0_m_e`, `u_3_1_m_e`, `u_3_2_m_e`, `u_3_3_m_e`, `u_3_4_m_e`,
+                `u_4_0_m_e`, `u_4_1_m_e`, `u_4_2_m_e`, `u_4_3_m_e`, `u_4_4_m_e`,
+                `u_5_0_m_e`, `u_5_1_m_e`, `u_5_3_m_e`, `u_5_5_m_e`, `u_5_6_m_e`,
+                `u_5_0_x_e`, `u_5_2_x_e`, `u_5_3_x_e`, `u_5_5_x_e`, `u_5_6_x_e`,
+                `u_6_0_m_e`, `u_6_1_m_e`, `u_6_2_m_e`, `u_6_3_m_e`, `u_6_4_m_e`, `u_6_5_m_e`,
+                `u_6_0_x_e`, `u_6_1_x_e`, `u_6_2_x_e`, `u_6_3_x_e`, `u_6_4_x_e`, `u_6_5_x_e`,
+                `eps_0_x_o`, `eps_1_x_o`, `eps_0_m_o`,
+                `u_1_0_m_o`, `u_1_1_m_o`, `u_1_2_m_o`,
+                `u_2_0_m_o`, `u_2_1_m_o`, `u_2_2_m_o`,
+                `u_2_0_x_o`, `u_2_1_x_o`, `u_2_2_x_o`, `u_2_3_x_o`, `u_2_4_x_o`, `u_2_5_x_o`,
+                `u_3_0_m_o`, `u_3_1_m_o`, `u_3_2_m_o`,
+                `u_4_0_m_o`, `u_4_1_m_o`, `u_4_2_m_o`,
+                `u_5_0_m_o`, `u_5_2_m_o`,
+                `u_5_0_x_o`, `u_5_2_x_o`, `u_5_3_x_o`, `u_5_5_x_o`, `u_5_6_x_o`,
+                `u_6_0_m_o`, `u_6_1_m_o`, `u_6_2_m_o`,
+                `u_6_0_x_o`, `u_6_1_x_o`, `u_6_2_x_o`, `u_6_3_x_o`, `u_6_4_x_o` and `u_6_5_x_o`
         """
         energy_params = [
             *[f"eps_{i}_x_{r}" for i in range(2) for r in ("e", "o")],
