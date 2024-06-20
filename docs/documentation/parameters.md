@@ -37,7 +37,7 @@ from literature:
 !!! tip "**Starting from Slater-Koster parameters**"
 
     The TMDybinding package automatically converts the Slater-Koster parameters to the Symmetry Group parameters.
-    If you save your variables in the [`SKParametersList`](#tmdybinding.SKParametersList) object, you can obtain the
+    If you save your variables in the [`SKParametersList`](api.md#tmdybinding.SKParametersList) object, you can obtain the
     Symmetry Group parameters by calling the appropriate parameter to this class.
 
     You also have the option to specify the angle between the plane of the Metal atoms and the first nearest neighbour
