@@ -1,5 +1,172 @@
 """The parameters used in the Symmetry-Group models for TMDs."""
-from .tmd_abstract_lattice import ParametersList
+from dataclasses import dataclass
+from typing import Optional, Dict, Union, List
+import warnings
+
+
+@dataclass
+class Parameter:
+    """Class to store one separate parameter"""
+    name: str = ""
+
+
+@dataclass
+class FloatParameter(Parameter):
+    """Class to store one separate float parameter"""
+    param: Optional[float] = None
+
+
+@dataclass
+class StringParameter(Parameter):
+    """Class to store one separate string parameter"""
+    param: Optional[str] = None
+
+
+class ParametersList:
+    """Class to save the parameters"""
+
+    def __init__(self, input_dict: Optional[Dict[str, Union[float, str]]] = None):
+        """Initialize the parameters for the TMD lattice.
+
+        Parameters:
+            input_dict (Optional[Dict[str, Union[float, str]]]): The parameters for the TMD lattice.
+            The keys are the names of the parameters and the values are the values of the parameters.
+            The keys are:
+            `a`,            `lamb_m`,       `lamb_x`,       `material`,
+            `eps_0_x_e`, `eps_1_x_e`, `eps_0_m_e`, `eps_1_m_e`,
+            `u_1_0_m_e`, `u_1_1_m_e`, `u_1_2_m_e`, `u_1_3_m_e`, `u_1_4_m_e`,
+            `u_2_0_m_e`, `u_2_1_m_e`, `u_2_2_m_e`, `u_2_3_m_e`, `u_2_4_m_e`, `u_2_5_m_e`,
+            `u_2_0_x_e`, `u_2_1_x_e`, `u_2_2_x_e`, `u_2_3_x_e`, `u_2_4_x_e`, `u_2_5_x_e`,
+            `u_3_0_m_e`, `u_3_1_m_e`, `u_3_2_m_e`, `u_3_3_m_e`, `u_3_4_m_e`,
+            `u_4_0_m_e`, `u_4_1_m_e`, `u_4_2_m_e`, `u_4_3_m_e`, `u_4_4_m_e`,
+            `u_5_0_m_e`, `u_5_1_m_e`, `u_5_3_m_e`, `u_5_5_m_e`, `u_5_6_m_e`,
+            `u_5_0_x_e`, `u_5_2_x_e`, `u_5_3_x_e`, `u_5_5_x_e`, `u_5_6_x_e`,
+            `u_6_0_m_e`, `u_6_1_m_e`, `u_6_2_m_e`, `u_6_3_m_e`, `u_6_4_m_e`, `u_6_5_m_e`,
+            `u_6_0_x_e`, `u_6_1_x_e`, `u_6_2_x_e`, `u_6_3_x_e`, `u_6_4_x_e`, `u_6_5_x_e`,
+            `eps_0_x_o`, `eps_1_x_o`, `eps_0_m_o`,
+            `u_1_0_m_o`, `u_1_1_m_o`, `u_1_2_m_o`,
+            `u_2_0_m_o`, `u_2_1_m_o`, `u_2_2_m_o`,
+            `u_2_0_x_o`, `u_2_1_x_o`, `u_2_2_x_o`, `u_2_3_x_o`, `u_2_4_x_o`, `u_2_5_x_o`,
+            `u_3_0_m_o`, `u_3_1_m_o`, `u_3_2_m_o`,
+            `u_4_0_m_o`, `u_4_1_m_o`, `u_4_2_m_o`,
+            `u_5_0_m_o`, `u_5_2_m_o`,
+            `u_5_0_x_o`, `u_5_2_x_o`, `u_5_3_x_o`, `u_5_5_x_o`, `u_5_6_x_o`,
+            `u_6_0_m_o`, `u_6_1_m_o`, `u_6_2_m_o`,
+            `u_6_0_x_o`, `u_6_1_x_o`, `u_6_2_x_o`, `u_6_3_x_o`, `u_6_4_x_o` and `u_6_5_x_o`
+        """
+        energy_params = [
+            *[f"eps_{i}_x_{r}" for i in range(2) for r in ("e", "o")],
+            *[f"eps_{i}_m_{r}" for i in "0" for r in ("e", "o")],
+            *[f"eps_{i}_m_{r}" for i in "1" for r in "e"],
+            *[f"u_{u}_{i}_m_e" for u in ("1", "3", "4") for i in range(5)],
+            *[f"u_{u}_{i}_m_o" for u in ("1", "3", "4") for i in range(3)],
+            *[f"u_{u}_{i}_{m}_e" for u in ("2", "6") for i in range(6) for m in ("m", "x")],
+            *[f"u_{u}_{i}_x_o" for u in ("2", "6") for i in range(6)],
+            *[f"u_{u}_{i}_m_o" for u in ("2", "6") for i in range(3)],
+            *[f"u_{u}_{i}_m_e" for u in "5" for i in ("0", "1", "3", "5", "6")],
+            *[f"u_{u}_{i}_x_{r}" for u in "5" for i in ("0", "2", "3", "5", "6") for r in ("e", "o")],
+            *[f"u_{u}_{i}_m_o" for u in "5" for i in ("0", "2")],
+        ]
+
+        energy_params_names = [
+            *[rf"$\epsilon_{i}^{{X,{r}}}$" for i in range(2) for r in ("e", "o")],
+            *[rf"$\epsilon_{i}^{{M,{r}}}$" for i in "0" for r in ("e", "o")],
+            *[rf"$\epsilon_{i}^{{M,{r}}}$" for i in "1" for r in "e"],
+            *[rf"$u_{u}^{{{i},e}}$" for u in ("1", "3", "4") for i in range(5)],
+            *[rf"$u_{u}^{{{i},o}}$" for u in ("1", "3", "4") for i in range(3)],
+            *[rf"$u_{u}^{{{i},{m}e}}$" for u in ("2", "6") for i in range(6) for m in ("M", "X")],
+            *[rf"$u_{u}^{{{i},Xo}}$" for u in ("2", "6") for i in range(6)],
+            *[rf"$u_{u}^{{{i},Mo}}$" for u in ("2", "6") for i in range(3)],
+            *[rf"$u_{u}^{{{i},Me}}$" for u in "5" for i in ("0", "1", "3", "5", "6")],
+            *[rf"$u_{u}^{{{i},X{r}}}$" for u in "5" for i in ("0", "2", "3", "5", "6") for r in ("e", "o")],
+            *[rf"$u_{u}^{{{i},Mo}}$" for u in "5" for i in ("0", "2")],
+        ]
+
+        self._energy_params_dict: Dict[str, FloatParameter] = dict(zip(
+            energy_params,
+            [FloatParameter(name=p_name) for p_name in energy_params_names]
+        ))
+
+        self._general_params_dict: Dict[str, Union[FloatParameter, StringParameter]] = dict(zip(
+            ["a", "lamb_m", "lamb_x", "material"],
+            [
+                FloatParameter(param=1., name=r"$a$"),
+                FloatParameter(name=r"$\lambda_M$"),
+                FloatParameter(name=r"$\lambda_X$"),
+                StringParameter(name="material")
+            ]
+        ))
+        if input_dict is not None:
+            self.from_dict(input_dict)
+
+    @property
+    def _unique_params_dict(self) -> List[dict]:
+        return [self._general_params_dict, self._energy_params_dict]
+
+    @property
+    def _protected_params_dict(self) -> Optional[List[dict]]:
+        return None
+
+    @property
+    def _all_params_dict(self) -> List[dict]:
+        return self._unique_params_dict + (self._protected_params_dict or [])
+
+    @property
+    def _allowed_params(self):
+        return [param_key for param_dict in self._all_params_dict for param_key in param_dict.keys()]
+
+    def _check_key(self, key) -> bool:
+        if key not in self._allowed_params:
+            warnings.warn(f"Variable {key} is not an expected variable, it is ignored", UserWarning, stacklevel=2)
+            return False
+        return True
+
+    def __setitem__(self, key, value):
+        if self._check_key(key):
+            for param_dict in self._unique_params_dict:
+                if key in param_dict.keys():
+                    param_dict[key].param = value
+                    return
+            if self._protected_params_dict is not None:
+                for param_dict in self._protected_params_dict:
+                    if key in param_dict.keys():
+                        param_dict[key].param = value
+                        warnings.warn(f"The variable {key} is read-only, you should not change it.", UserWarning, stacklevel=2)
+                        return
+            warnings.warn(f"This should not happen, {key} should be a valid key.", UserWarning, stacklevel=2)
+
+    def __getitem__(self, item) -> Union[float, str]:
+        return self.get_param(item) or 0.0
+
+    def get_dict(self) -> dict:
+        """Function to get the variables as a dict."""
+        out_dict = {}
+        for param_dict in self._unique_params_dict:
+            for key, item in param_dict.items():
+                if item.param is not None:
+                    out_dict[key] = item.param
+        return out_dict
+
+    def get_param(self, key):
+        """Function to get the specific variable"""
+        if self._check_key(key):
+            for param_dict in self._all_params_dict:
+                if key in param_dict.keys():
+                    return param_dict[key].param
+            warnings.warn(f"This should not happen, {key} should be a valid key.", UserWarning, stacklevel=2)
+
+    def get_name(self, key) -> str:
+        """Function to get the name (in LaTeX) of the specific variable"""
+        if self._check_key(key):
+            for param_dict in self._all_params_dict:
+                if key in param_dict.keys():
+                    return param_dict[key].name
+            warnings.warn(f"This should not happen, {key} should be a valid key.", UserWarning, stacklevel=2)
+
+    def from_dict(self, input_dict: Dict[str, Union[float, str]]):
+        """Function to set the variables with a dict."""
+        for param_name, value in input_dict.items():
+            self[param_name] = value
 
 
 _liu_2nn_mos2_fitted = ParametersList(dict(zip(

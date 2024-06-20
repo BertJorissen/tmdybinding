@@ -13,8 +13,12 @@ copyright:  "TMDybinding is a free software: you can redistribute it and/or modi
 # Navigation
 nav:
   - Home: 'index.md'
-  - API: "api.md"
+  - Documentation:
+    - Documentation: "documentation/index.md"
+    - Possible parameters: "documentation/parameters.md"
+    - API: "documentation/api.md"
   - About:
+    - "api.md"
     - README.md: 'about/README.md'
     - LICENSE.md: 'about/LICENSE.md'
     - changelog.md: 'about/changelog.md'
