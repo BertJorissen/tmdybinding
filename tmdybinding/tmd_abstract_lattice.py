@@ -438,8 +438,12 @@ class LatticeOrbitals:
                     l_b = np.abs(l_num) == lm
                     assert np.sum(l_b) < 3, \
                         f"the representation can only be given for max two parts, {np.sum(l_b)} given"
-                    assert (np.sum(l_b) == 2 and l_num[l_b][0] == -l_num[l_b][1]), \
-                        f"can't have same l-number if group is not defined, for '{lm}'"
+                    if np.sum(l_b) == 2:
+                        assert l_num[l_b][0] == -l_num[l_b][1], \
+                            f"can't have same l-number if group is not defined, for '{lm}'"
+                    else:
+                        assert lm == 0, \
+                            f"can't have a sole l-number other than zero, '{lm}' given"
                     assert np.sum(l_b) == 1, \
                         f"can't have a sole l-number, only one '{lm}' given"
         group_local = group if group_bool else dict([(name, np.abs(l_local[name])) for name in self.names])

@@ -81,7 +81,7 @@ class TmdNN123MeoXeo(AbstractLattice):
             group={"M": [0, 1, 1, 2, 2], "X": [0, 0, 1, 2, 2, 3]}
         )
         super().__init__(orbital=orbital, params=fang["MoS2"], lattice_name="11 bands 3NN model",
-                         n_v=6, n_b=11, **kwargs)
+                         n_v=6, n_b=11)
         [setattr(self, var, kwargs[var]) for var in [*kwargs]]
 
     def _generate_matrices(self):
@@ -155,7 +155,8 @@ class TmdNN256Meo(AbstractLattice):
     def __init__(self, **kwargs):
         orbital = LatticeOrbitals(
             l_number={"M": [0, 2, -2, 1, -1]},
-            orbs={"M": ["dz2", "dx2y2", "dxy", "dxz", "dyz"]}
+            orbs={"M": ["dz2", "dx2y2", "dxy", "dxz", "dyz"]},
+            group={"M": [0, 1, 1, 2, 2]}
         )
         super().__init__(orbital=orbital, params=wu["MoS2"], lattice_name="5 bands 6NN model",
                          n_v=0, n_b=5)
