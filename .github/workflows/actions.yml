@@ -23,7 +23,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies Pybinding
         run: |
-          python -m pip install wheel scipy matplotlib pytest cmake ninja build setuptools
+          python -m pip install wheel scipy matplotlib pytest cmake ninja build setuptools numpy<2.0.0
           python -m pip install git+https://github.com/bertjorissen/pybinding.git
       - name: Build wheel
         run: python -m build --sdist --outdir dist/
