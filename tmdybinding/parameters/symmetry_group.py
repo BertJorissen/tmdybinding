@@ -164,7 +164,33 @@ class ParametersList:
             warnings.warn(f"This should not happen, {key} should be a valid key.", UserWarning, stacklevel=2)
 
     def from_dict(self, input_dict: Dict[str, Union[float, str]]):
-        """Function to set the variables with a dict."""
+        """Function to set the variables with a dict.
+
+        Parameters:
+            input_dict (dict): The dictionary containing the parameters for the TMD lattice.
+                The allowed keys are:
+                `a`,            `lamb_m`,       `lamb_x`,       `material`,
+                `eps_0_x_e`, `eps_1_x_e`, `eps_0_m_e`, `eps_1_m_e`,
+                `u_1_0_m_e`, `u_1_1_m_e`, `u_1_2_m_e`, `u_1_3_m_e`, `u_1_4_m_e`,
+                `u_2_0_m_e`, `u_2_1_m_e`, `u_2_2_m_e`, `u_2_3_m_e`, `u_2_4_m_e`, `u_2_5_m_e`,
+                `u_2_0_x_e`, `u_2_1_x_e`, `u_2_2_x_e`, `u_2_3_x_e`, `u_2_4_x_e`, `u_2_5_x_e`,
+                `u_3_0_m_e`, `u_3_1_m_e`, `u_3_2_m_e`, `u_3_3_m_e`, `u_3_4_m_e`,
+                `u_4_0_m_e`, `u_4_1_m_e`, `u_4_2_m_e`, `u_4_3_m_e`, `u_4_4_m_e`,
+                `u_5_0_m_e`, `u_5_1_m_e`, `u_5_3_m_e`, `u_5_5_m_e`, `u_5_6_m_e`,
+                `u_5_0_x_e`, `u_5_2_x_e`, `u_5_3_x_e`, `u_5_5_x_e`, `u_5_6_x_e`,
+                `u_6_0_m_e`, `u_6_1_m_e`, `u_6_2_m_e`, `u_6_3_m_e`, `u_6_4_m_e`, `u_6_5_m_e`,
+                `u_6_0_x_e`, `u_6_1_x_e`, `u_6_2_x_e`, `u_6_3_x_e`, `u_6_4_x_e`, `u_6_5_x_e`,
+                `eps_0_x_o`, `eps_1_x_o`, `eps_0_m_o`,
+                `u_1_0_m_o`, `u_1_1_m_o`, `u_1_2_m_o`,
+                `u_2_0_m_o`, `u_2_1_m_o`, `u_2_2_m_o`,
+                `u_2_0_x_o`, `u_2_1_x_o`, `u_2_2_x_o`, `u_2_3_x_o`, `u_2_4_x_o`, `u_2_5_x_o`,
+                `u_3_0_m_o`, `u_3_1_m_o`, `u_3_2_m_o`,
+                `u_4_0_m_o`, `u_4_1_m_o`, `u_4_2_m_o`,
+                `u_5_0_m_o`, `u_5_2_m_o`,
+                `u_5_0_x_o`, `u_5_2_x_o`, `u_5_3_x_o`, `u_5_5_x_o`, `u_5_6_x_o`,
+                `u_6_0_m_o`, `u_6_1_m_o`, `u_6_2_m_o`,
+                `u_6_0_x_o`, `u_6_1_x_o`, `u_6_2_x_o`, `u_6_3_x_o`, `u_6_4_x_o` and `u_6_5_x_o`
+        """
         for param_name, value in input_dict.items():
             self[param_name] = value
 

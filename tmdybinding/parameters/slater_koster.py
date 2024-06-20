@@ -11,16 +11,25 @@ class SKParametersList(ParametersList):
 
         Parameters:
             input_dict (dict): The dictionary containing the SK parameters. The keys are the parameter names and the
-                values are the parameter values. The keys are: `theta`, `delta_p`, `delta_z`, `delta_0`, `delta_1`,
-                `delta_2`, `v_0_pps`, `v_0_ppp`, `v_1_e_pds`, `v_1_e_pdp`, `v_1_o_pds`, `v_1_o_pdp`, `v_2_e_pds`,
-                `v_2_e_pdp`, `v_2_e_pps`, `v_2_e_ppp`, `v_2_e_pps_tb`, `v_2_e_ppp_tb`, `v_2_o_pds`, `v_2_o_pdp`,
-                `v_2_o_pps`, `v_2_o_ppp`, `v_2_o_pps_tb`, `v_2_o_ppp_tb`, `v_2_e_dds`, `v_2_e_ddp`, `v_2_e_ddd`,
-                `v_2_o_ddp`, `v_2_o_ddd`, `v_3_e_pds`, `v_3_e_pdp`, `v_3_o_pds`, `v_3_o_pdp`, `v_4_e_pds`, `v_4_e_pdp`,
-                `v_4_o_pds`, `v_4_o_pdp`, `v_5_e_pds`, `v_5_e_pdp`, `v_5_o_pds`, `v_5_o_pdp`, `v_5_e_pps`, `v_5_e_ppp`,
-                `v_5_e_pps_tb`, `v_5_e_ppp_tb`, `v_5_o_pps`, `v_5_o_ppp`, `v_5_o_pps_tb`, `v_5_o_ppp_tb`, `v_5_e_dds`,
-                `v_5_e_ddp`, `v_5_e_ddd`, `v_5_o_ddp`, `v_5_o_ddd`, `v_6_e_pds`, `v_6_e_pdp`, `v_6_o_pds`, `v_6_o_pdp`,
-                `v_6_e_pps`, `v_6_e_ppp`, `v_6_e_pps_tb`, `v_6_e_ppp_tb`, `v_6_o_pps`, `v_6_o_ppp`, `v_6_o_pps_tb`,
-                `v_6_o_ppp_tb`, `v_6_e_dds`, `v_6_e_ddp`, `v_6_e_ddd`, `v_6_o_ddp` and `v_6_o_ddd`"""
+                values are the parameter values. The keys are:
+                `a`, `lamb_x`, `lamb_m`, `material`, `theta`,
+                `delta_p`, `delta_z`, `delta_0`, `delta_1`, `delta_2`,
+                `v_0_pps`, `v_0_ppp`,
+                `v_1_e_pds`, `v_1_e_pdp`, `v_1_o_pds`, `v_1_o_pdp`,
+                `v_2_e_pps`, `v_2_e_ppp`, `v_2_e_pps_tb`, `v_2_e_ppp_tb`,
+                `v_2_o_pps`, `v_2_o_ppp`, `v_2_o_pps_tb`, `v_2_o_ppp_tb`,
+                `v_2_e_dds`, `v_2_e_ddp`, `v_2_e_ddd`,
+                `v_2_o_ddp`, `v_2_o_ddd`,
+                `v_3_e_pds`, `v_3_e_pdp`, `v_3_o_pds`, `v_3_o_pdp`,
+                `v_4_e_pds`, `v_4_e_pdp`, `v_4_o_pds`, `v_4_o_pdp`,
+                `v_5_e_pps`, `v_5_e_ppp`, `v_5_e_pps_tb`, `v_5_e_ppp_tb`,
+                `v_5_o_pps`, `v_5_o_ppp`, `v_5_o_pps_tb`, `v_5_o_ppp_tb`,
+                `v_5_e_dds`, `v_5_e_ddp`, `v_5_e_ddd`,
+                `v_5_o_ddp`, `v_5_o_ddd`,
+                `v_6_e_pps`, `v_6_e_ppp`, `v_6_e_pps_tb`, `v_6_e_ppp_tb`,
+                `v_6_o_pps`, `v_6_o_ppp`, `v_6_o_pps_tb`, `v_6_o_ppp_tb`,
+                `v_6_e_dds`, `v_6_e_ddp`, `v_6_e_ddd`,
+                `v_6_o_ddp` and `v_6_o_ddd`"""
         super().__init__(None)
         self._recalculate_params_bool: bool = True
         self._tan_theta: Optional[float] = None
@@ -82,16 +91,25 @@ class SKParametersList(ParametersList):
 
         Parameters:
             input_dict (dict): The dictionary containing the SK parameters. The keys are the parameter names and the
-                values are the parameter values. The keys are: `theta`, `delta_p`, `delta_z`, `delta_0`, `delta_1`,
-                `delta_2`, `v_0_pps`, `v_0_ppp`, `v_1_e_pds`, `v_1_e_pdp`, `v_1_o_pds`, `v_1_o_pdp`, `v_2_e_pds`,
-                `v_2_e_pdp`, `v_2_e_pps`, `v_2_e_ppp`, `v_2_e_pps_tb`, `v_2_e_ppp_tb`, `v_2_o_pds`, `v_2_o_pdp`,
-                `v_2_o_pps`, `v_2_o_ppp`, `v_2_o_pps_tb`, `v_2_o_ppp_tb`, `v_2_e_dds`, `v_2_e_ddp`, `v_2_e_ddd`,
-                `v_2_o_ddp`, `v_2_o_ddd`, `v_3_e_pds`, `v_3_e_pdp`, `v_3_o_pds`, `v_3_o_pdp`, `v_4_e_pds`, `v_4_e_pdp`,
-                `v_4_o_pds`, `v_4_o_pdp`, `v_5_e_pds`, `v_5_e_pdp`, `v_5_o_pds`, `v_5_o_pdp`, `v_5_e_pps`, `v_5_e_ppp`,
-                `v_5_e_pps_tb`, `v_5_e_ppp_tb`, `v_5_o_pps`, `v_5_o_ppp`, `v_5_o_pps_tb`, `v_5_o_ppp_tb`, `v_5_e_dds`,
-                `v_5_e_ddp`, `v_5_e_ddd`, `v_5_o_ddp`, `v_5_o_ddd`, `v_6_e_pds`, `v_6_e_pdp`, `v_6_o_pds`, `v_6_o_pdp`,
-                `v_6_e_pps`, `v_6_e_ppp`, `v_6_e_pps_tb`, `v_6_e_ppp_tb`, `v_6_o_pps`, `v_6_o_ppp`, `v_6_o_pps_tb`,
-                `v_6_o_ppp_tb`, `v_6_e_dds`, `v_6_e_ddp`, `v_6_e_ddd`, `v_6_o_ddp` and `v_6_o_ddd`"""
+                values are the parameter values. The keys are:
+                `a`, `lamb_x`, `lamb_m`, `material`, `theta`,
+                `delta_p`, `delta_z`, `delta_0`, `delta_1`, `delta_2`,
+                `v_0_pps`, `v_0_ppp`,
+                `v_1_e_pds`, `v_1_e_pdp`, `v_1_o_pds`, `v_1_o_pdp`,
+                `v_2_e_pps`, `v_2_e_ppp`, `v_2_e_pps_tb`, `v_2_e_ppp_tb`,
+                `v_2_o_pps`, `v_2_o_ppp`, `v_2_o_pps_tb`, `v_2_o_ppp_tb`,
+                `v_2_e_dds`, `v_2_e_ddp`, `v_2_e_ddd`,
+                `v_2_o_ddp`, `v_2_o_ddd`,
+                `v_3_e_pds`, `v_3_e_pdp`, `v_3_o_pds`, `v_3_o_pdp`,
+                `v_4_e_pds`, `v_4_e_pdp`, `v_4_o_pds`, `v_4_o_pdp`,
+                `v_5_e_pps`, `v_5_e_ppp`, `v_5_e_pps_tb`, `v_5_e_ppp_tb`,
+                `v_5_o_pps`, `v_5_o_ppp`, `v_5_o_pps_tb`, `v_5_o_ppp_tb`,
+                `v_5_e_dds`, `v_5_e_ddp`, `v_5_e_ddd`,
+                `v_5_o_ddp`, `v_5_o_ddd`,
+                `v_6_e_pps`, `v_6_e_ppp`, `v_6_e_pps_tb`, `v_6_e_ppp_tb`,
+                `v_6_o_pps`, `v_6_o_ppp`, `v_6_o_pps_tb`, `v_6_o_ppp_tb`,
+                `v_6_e_dds`, `v_6_e_ddp`, `v_6_e_ddd`,
+                `v_6_o_ddp` and `v_6_o_ddd`"""
         self._recalculate_params_bool = False
         super().from_dict(input_dict)
         self._recalculate_params_bool = True
@@ -431,10 +449,15 @@ class SKSimpleParametersList(SKParametersList):
         Parameters:
             input_dict (dict): Dictionary with the SK paramters. The keus are the parameter names and the values are the
                 parameter values. The parameter names are:
-                delta_p, delta_z, delta_0, delta_1, delta_2, v_0_pps, v_0_ppp, v_1_pds, v_1_pdp, v_2_dds, v_2_ddp,
-                v_2_ddd, v_2_pps, v_2_ppp, v_2_pps_tb, v_2_ppp_tb, v_3_pds, v_3_pdp, v_4_pds, v_4_pdp, v_5_dds,
-                v_5_ddp, v_5_ddd, v_5_pps, v_5_ppp, v_5_pps_tb, v_5_ppp_tb, v_6_dds, v_6_ddp, v_6_ddd, v_6_pps,
-                v_6_ppp, v_6_pps_tb and v_6_ppp_tb."""
+                `a`, `material`, `lamb_x`, `lamb_m`, `theta`,
+                `delta_p`, `delta_z`, `delta_0`, `delta_1`, `delta_2`,
+                `v_0_pps`, `v_0_ppp`,
+                `v_1_pds`, `v_1_pdp`,
+                `v_2_dds`, `v_2_ddp`, `v_2_ddd`, `v_2_pps`, `v_2_ppp`, `v_2_pps_tb`, `v_2_ppp_tb`,
+                `v_3_pds`, `v_3_pdp`,
+                `v_4_pds`, `v_4_pdp`,
+                `v_5_dds`, `v_5_ddp`, `v_5_ddd`, `v_5_pps`, `v_5_ppp`, `v_5_pps_tb`, `v_5_ppp_tb`,
+                `v_6_dds`, `v_6_ddp`, `v_6_ddd`, `v_6_pps`, `v_6_ppp`, `v_6_pps_tb` and `v_6_ppp_tb`."""
         super().__init__(None)
         sk_simple_params = [
             *[f"v_{n}_pd{i}" for n in ("1", "3", "4") for i in ("s", "p")],
