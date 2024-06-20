@@ -897,6 +897,7 @@ class AbstractLattice(ABC):
                 soc_part_m = self._reorder(soc_part_m, (reorder_keys, reorder_keys))
                 h_0_m[:5, 5:] = soc_part_m
                 h_0_m[5:, :5] = soc_part_m.conj().T
+            print(self.name)
             if self.single_orbital:
                 n_m = len(m_orbs)
                 for i_m in range(n_m):
