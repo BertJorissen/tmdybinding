@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies Pybinding
         run: |
           python -m pip install wheel scipy matplotlib pytest cmake ninja build setuptools
-          python -m pip install --no-deps -i https://test.pypi.org/simple/ pybinding
+          python -m pip install git+https://github.com/bertjorissen/pybinding.git
       - name: Build wheel
         run: python -m build --sdist --outdir dist/
       - name: Test Python
