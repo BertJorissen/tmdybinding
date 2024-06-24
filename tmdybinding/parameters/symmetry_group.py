@@ -196,7 +196,7 @@ class ParametersList:
 
 
 _liu_2nn_mos2_fitted = ParametersList(dict(zip(
-    # fitted
+    # fitted https://doi.org/10.21468/SciPostPhysCore.7.1.004
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -210,7 +210,7 @@ _liu_2nn_mos2_fitted = ParametersList(dict(zip(
 )))
 
 _liu_6nn_mos2_fitted = ParametersList(dict(zip(
-    # fitted
+    # fitted https://doi.org/10.21468/SciPostPhysCore.7.1.004
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -228,7 +228,7 @@ _liu_6nn_mos2_fitted = ParametersList(dict(zip(
 )))
 
 _liu_2nn_mos2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -242,7 +242,7 @@ _liu_2nn_mos2 = ParametersList(dict(zip(
 )))
 
 _liu_2nn_mose2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -256,7 +256,7 @@ _liu_2nn_mose2 = ParametersList(dict(zip(
 )))
 
 _liu_2nn_mote2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -270,7 +270,7 @@ _liu_2nn_mote2 = ParametersList(dict(zip(
 )))
 
 _liu_2nn_ws2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -284,7 +284,7 @@ _liu_2nn_ws2 = ParametersList(dict(zip(
 )))
 
 _liu_2nn_wse2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -298,7 +298,7 @@ _liu_2nn_wse2 = ParametersList(dict(zip(
 )))
 
 _liu_2nn_wte2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -312,7 +312,7 @@ _liu_2nn_wte2 = ParametersList(dict(zip(
 )))
 
 _liu_6nn_mos2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -330,7 +330,7 @@ _liu_6nn_mos2 = ParametersList(dict(zip(
 )))
 
 _liu_6nn_mose2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -348,7 +348,7 @@ _liu_6nn_mose2 = ParametersList(dict(zip(
 )))
 
 _liu_6nn_mote2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -366,7 +366,7 @@ _liu_6nn_mote2 = ParametersList(dict(zip(
 )))
 
 _liu_6nn_ws2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -384,7 +384,7 @@ _liu_6nn_ws2 = ParametersList(dict(zip(
 )))
 
 _liu_6nn_wse2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -402,7 +402,7 @@ _liu_6nn_wse2 = ParametersList(dict(zip(
 )))
 
 _liu_6nn_wte2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.88.085433
+    # from https://doi.org/10.1103/PhysRevB.88.085433
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -420,7 +420,7 @@ _liu_6nn_wte2 = ParametersList(dict(zip(
 )))
 
 _wu = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.91.075310
+    # from https://doi.org/10.1103/PhysRevB.88.085433 and https://doi.org/10.1103/PhysRevB.91.075310
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",    "eps_0_m_o",
@@ -444,7 +444,7 @@ _wu = ParametersList(dict(zip(
 )))
 
 _fang_mos2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
+    # from https://doi.org/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",    "eps_0_m_o",
@@ -473,7 +473,7 @@ _fang_mos2 = ParametersList(dict(zip(
 )))
 
 _fang_ws2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
+    # from https://doi.org/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",    "eps_0_m_o",
@@ -502,7 +502,7 @@ _fang_ws2 = ParametersList(dict(zip(
 )))
 
 _fang_mose2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
+    # from https://doi.org/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",    "eps_0_m_o",
@@ -531,7 +531,7 @@ _fang_mose2 = ParametersList(dict(zip(
 )))
 
 _fang_wse2 = ParametersList(dict(zip(
-    # from https://link.aps.org/doi/10.1103/PhysRevB.92.205108
+    # from https://doi.org/10.1103/PhysRevB.92.205108
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",    "eps_0_m_o",
@@ -561,7 +561,7 @@ _fang_wse2 = ParametersList(dict(zip(
 
 
 _wu_fitted = ParametersList(dict(zip(
-    #  fitted
+    #  fitted https://doi.org/10.21468/SciPostPhysCore.7.1.004
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",    "eps_0_m_o",
@@ -585,7 +585,7 @@ _wu_fitted = ParametersList(dict(zip(
 )))
 
 _fang_mos2_fitted = ParametersList(dict(zip(
-    # from fitted
+    # fitted https://doi.org/10.21468/SciPostPhysCore.7.1.004
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",    "eps_0_m_o",
@@ -614,7 +614,7 @@ _fang_mos2_fitted = ParametersList(dict(zip(
 )))
 
 _jorissen_mos2 = ParametersList(dict(zip(
-    # from fitted
+    # https://doi.org/10.21468/SciPostPhysCore.7.1.004
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_m_e",    "eps_1_m_e",
@@ -635,7 +635,7 @@ _jorissen_mos2 = ParametersList(dict(zip(
 )))
 
 _all_mos2 = ParametersList(dict(zip(
-    # from fitted
+    # fitted https://doi.org/10.21468/SciPostPhysCore.7.1.004
     [
         "a",            "lamb_m",       "lamb_x",       "material",
         "eps_0_x_e", "eps_1_x_e", "eps_0_m_e", "eps_1_m_e",

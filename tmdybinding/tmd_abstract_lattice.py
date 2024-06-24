@@ -93,7 +93,6 @@ class VariableStorage:
         return [self._attr_check(name, params_dict) for name in self.__keys]
 
     def _component_check(self, params_dict: dict):
-        print(self._make_bools(params_dict))
         (m_bool, c_bool,
          h_1_m_bool,
          h_2_m_bool, h_2_c_bool,

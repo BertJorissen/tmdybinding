@@ -55,6 +55,10 @@ lat.plot()
   </figure>
 </div>
 
+!!! warning "**Selecting parameters and classes**"
+
+    Please use the combinations of class and parameters as given in [Documentation/Possible parameters](documentation/parameters.md).
+
 ### Using the lattice
 
 Below is a small example of how to use the code for the 5-band model from Liu/Wu:
