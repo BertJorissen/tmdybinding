@@ -867,11 +867,11 @@ class AbstractLattice(ABC):
             for f_i, nf_i in enumerate(fnl):
                 for t_j, nt_j in enumerate(tnl):
                     h_names = [self._make_name(h_name, n_i, nfi, ntj) for n_i, nfi, ntj in zip(n_n_n, nf_i, nt_j)]
-                    lat.register_hopping_energies(dict([(h_n_i, h.T[f_i, t_j]) for h_n_i, h in zip(h_names, hn)]))
+                    lat.register_hopping_energies(dict([(h_n_i, h.conj().T[f_i, t_j]) for h_n_i, h in zip(h_names, hn)]))
                     lat.add_hoppings(*[(co, nfi, ntj, h_n_i) for co, h_n_i, nfi, ntj in zip(cos, h_names, nf_i, nt_j)])
         else:
             h_names = [self._make_name(h_name, n_i, nfi, ntj) for n_i, nfi, ntj in zip(n_n_n, fnl, tnl)]
-            lat.register_hopping_energies(dict([(h_n_i, h.T) for h_n_i, h in zip(h_names, hn)]))
+            lat.register_hopping_energies(dict([(h_n_i, h.conj().T) for h_n_i, h in zip(h_names, hn)]))
             lat.add_hoppings(*[(co, nfi, ntj, h_n_i) for co, h_n_i, nfi, ntj in zip(cos, h_names, fnl, tnl)])
         return lat
 
