@@ -8,11 +8,15 @@ repo_url: https://github.com/BertJorissen/tmdybinding
 edit_uri: https://github.com/BertJorissen/tmdybinding/tree/master/docs
 
 # Copyright
-copyright:  "TMDybinding is a free software: you can redistribute it and/or modify it under the terms LICENSE. Copyright © 2023 Bert Jorissen"
+copyright:  "TMDybinding is a free software: you can redistribute it and/or modify it under the terms LICENSE. Copyright © 2024 Bert Jorissen"
 
 # Navigation
 nav:
   - Home: 'index.md'
+  - Documentation:
+    - Documentation: "documentation/index.md"
+    - Possible parameters: "documentation/parameters.md"
+    - API: "documentation/api.md"
   - About:
     - README.md: 'about/README.md'
     - LICENSE.md: 'about/LICENSE.md'
@@ -20,6 +24,9 @@ nav:
 
 # Configuration
 site_dir: "../docs/"
+plugins:
+  - search
+  - mkdocstrings
 theme:
   name: material
   language: "en"
@@ -34,7 +41,6 @@ theme:
     - navigation.top
     - navigation.sections
     - navigation.expand
-#    - navigation.instant problem with the homepage
     - navigation.tracking
     - toc.integrate
     - toc.follow
