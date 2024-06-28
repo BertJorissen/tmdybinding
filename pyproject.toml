@@ -1,6 +1,6 @@
 [project]
 name = "tmdybinding"
-version = "0.1.1"
+version = "0.1.2"
 authors = [
     {name="Bert Jorissen", email="info@bertjorissen.be"}
 ]
@@ -39,4 +39,4 @@ keywords = [
 "changelog" = "https://github.com/BertJorissen/tmdybinding/blob/master/changelog.md"
 
 [tool.setuptools]
-packages = ["tmdybinding"]
+packages = ["tmdybinding", "tmdybinding.parameters"]
