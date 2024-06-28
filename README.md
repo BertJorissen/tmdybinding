@@ -1,10 +1,3 @@
-import tmdybinding as td
-
-# make the lattice object
-lat = td.TmdNN256Me(params=td.liu6["MoS2"]).lattice()
-
-# make a figure with the lattice
-lat.plot()# TMDybinding
 <img src="https://github.com/BertJorissen/tmdybinding/blob/master/docs/assets/images/logo.png?raw=true" width="100">
 
 **TMDybinding** is an open-source Python module for [Pybinding].
