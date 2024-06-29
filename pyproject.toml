@@ -38,11 +38,21 @@ keywords = [
 "documentation" = "https://bertjorissen.github.io/tmdybinding"
 "changelog" = "https://github.com/BertJorissen/tmdybinding/blob/master/changelog.md"
 
+[build-system]
+requires = [ "setuptools"]
+build-backend = "setuptools.build_meta"
+
 [tool.setuptools]
 packages = [
     "tmdybinding",
     "tmdybinding.parameters",
-    "tmdybdinding.tests",
+    "tmdybinding.tests",
     "tmdybinding.tests.baseline_data",
-    "tmdybinding.tests.baseline_data.lattice
+    "tmdybinding.tests.baseline_data.lattice"
 ]
+
+[tool.setuptools.package-dir]
+"tmdybinding.tests" = "tests"
+
+[tool.setuptools.package-data]
+"tmdybinding.tests.baseline_data.lattice" = ["*.pbz"]
