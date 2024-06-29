@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sources
-          path: dist/*.tar.gz
+          path: dist/*
 
   testbuilds:
     name: Test build on ${{ matrix.os }} for ${{ matrix.source }} with Python ${{ matrix.python-version }}
