@@ -40,7 +40,7 @@ jobs:
     name: Test builds
     environment: actions
     runs-on: ubuntu-latest
-    nees: [ build-sdist ]
+    needs: [ build-sdist ]
     strategy:
         matrix:
             os: [ ubuntu-latest, windows-latest, macos-12, macos-14]
