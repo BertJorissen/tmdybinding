@@ -55,4 +55,5 @@ packages = [
 "tmdybinding.tests" = "tests"
 
 [tool.setuptools.package-data]
+"tmdybinding.tests" = ["*.cfg, *.py"]
 "tmdybinding.tests.baseline_data.lattice" = ["*.pbz"]
