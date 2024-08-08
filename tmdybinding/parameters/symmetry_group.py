@@ -117,6 +117,7 @@ class ParametersList:
 
     def _check_key(self, key) -> bool:
         if key not in self._allowed_params:
+            assert False
             warnings.warn(f"Variable {key} is not an expected variable, it is ignored", UserWarning, stacklevel=2)
             return False
         return True

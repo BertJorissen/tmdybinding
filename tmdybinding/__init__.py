@@ -2,6 +2,7 @@
 from .tmd_lattice import *
 from .tmd_abstract_lattice import *
 from .parameters import *
+from .tmd_strain import *
 
 
 def tests():
