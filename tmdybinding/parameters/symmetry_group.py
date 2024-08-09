@@ -117,9 +117,8 @@ class ParametersList:
 
     def _check_key(self, key) -> bool:
         if key not in self._allowed_params:
-            assert False
             warnings.warn(f"Variable {key} is not an expected variable, it is ignored", UserWarning, stacklevel=2)
-            return False
+            assert False
         return True
 
     def __setitem__(self, key, value):
@@ -139,7 +138,7 @@ class ParametersList:
     def __getitem__(self, item) -> Union[float, str]:
         return self.get_param(item) or 0.0
 
-    def get_dict(self) -> dict:
+    def t_m(self) -> dict:
         """Function to get the variables as a dict."""
         out_dict = {}
         for param_dict in self._unique_params_dict:
