@@ -118,7 +118,6 @@ class ParametersList:
     def _check_key(self, key) -> bool:
         if key not in self._allowed_params:
             warnings.warn(f"Variable {key} is not an expected variable, it is ignored", UserWarning, stacklevel=2)
-            assert False
         return True
 
     def __setitem__(self, key, value):
