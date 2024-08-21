@@ -897,30 +897,30 @@ class AbstractLattice(ABC):
                 h_0_m[:5, 5:] = soc_part_m
                 h_0_m[5:, :5] = soc_part_m.conj().T
 
+            pos_m = np.array([0, 0])
             if self.single_orbital:
                 n_m = len(m_orbs)
                 for i_m in range(n_m):
-                    lat.add_one_sublattice(m_orbs[i_m], [0, 0], np.real(h_0_m[i_m, i_m]))
+                    lat.add_one_sublattice(m_orbs[i_m], pos_m, np.real(h_0_m[i_m, i_m]))
                 for i_m in range(n_m):
                     for j_m in np.arange(i_m + 1, n_m):
                         h_name = self._make_name("h_0_m", 0, m_orbs[i_m], m_orbs[j_m])
                         lat.register_hopping_energies(dict([(h_name, h_0_m[i_m, j_m])]))
                         lat.add_one_hopping([0, 0], m_orbs[i_m], m_orbs[j_m], h_name)
             else:
-                lat.add_one_sublattice(self.m_name, [0, 0], h_0_m)
+                lat.add_one_sublattice(self.m_name, pos_m, h_0_m)
             if self.lat4:
+                pos_m2 = np.array([self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 2])
                 if self.single_orbital:
                     for i_m in range(n_m):
-                        lat.add_one_sublattice(m2_orbs[i_m], [0, 0], np.real(h_0_m[i_m, i_m]))
+                        lat.add_one_sublattice(m2_orbs[i_m], pos_m2, np.real(h_0_m[i_m, i_m]))
                     for i_m in range(n_m):
                         for j_m in np.arange(i_m + 1, n_m):
                             h_name = self._make_name("h_0_m", 0, m2_orbs[i_m], m2_orbs[j_m])
                             lat.register_hopping_energies(dict([(h_name, h_0_m[i_m, j_m])]))
                             lat.add_one_hopping([0, 0], m2_orbs[i_m], m2_orbs[j_m], h_name)
                 else:
-                    lat.add_one_sublattice(self.m_name + "2",
-                                           [self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 2],
-                                           h_0_m)
+                    lat.add_one_sublattice(self.m_name + "2", pos_m2, h_0_m)
 
         if self.lattice_params.h_0_c is not None:
             h_0_c = self._make_onsite(self.lattice_params.h_0_c, self.x_name, self.lattice_params.lamb_c)
@@ -941,36 +941,30 @@ class AbstractLattice(ABC):
                 soc_part_c = self._reorder(soc_part_c, (reorder_keys1 + reorder_keys2, reorder_keys1 + reorder_keys2))
                 h_0_c[:6, 6:] = soc_part_c
                 h_0_c[6:, :6] = soc_part_c.conj().T
+            pos_c = np.array([self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 6])
             if self.single_orbital:
                 for i_c in range(n_c):
-                    lat.add_one_sublattice(c_orbs[i_c],
-                                           [self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 6],
-                                           np.real(h_0_c[i_c, i_c]))
+                    lat.add_one_sublattice(c_orbs[i_c],pos_c, np.real(h_0_c[i_c, i_c]))
                 for i_c in range(n_c):
                     for j_c in np.arange(i_c + 1, n_c):
                         h_name = self._make_name("h_0_c", 0, c_orbs[i_c], c_orbs[j_c])
                         lat.register_hopping_energies(dict([(h_name, h_0_c[i_c, j_c])]))
                         lat.add_one_hopping([0, 0], c_orbs[i_c], c_orbs[j_c], h_name)
             else:
-                lat.add_one_sublattice(self.x_name,
-                                       [self.lattice_params.a / 2, self.lattice_params.a * np.sqrt(3) / 6],
-                                       h_0_c)
+                lat.add_one_sublattice(self.x_name, pos_c, h_0_c)
 
             if self.lat4:
+                pos_c2 = np.array([0, self.lattice_params.a * 2 * np.sqrt(3) / 6])
                 if self.single_orbital:
                     for i_c in range(n_c):
-                        lat.add_one_sublattice(c2_orbs[i_c],
-                                               [0, self.lattice_params.a * 2 * np.sqrt(3) / 6],
-                                               np.real(h_0_c[i_c, i_c]))
+                        lat.add_one_sublattice(c2_orbs[i_c], pos_c2, np.real(h_0_c[i_c, i_c]))
                     for i_c in range(n_c):
                         for j_c in np.arange(i_c + 1, n_c):
                             h_name = self._make_name("h_0_c", 0, c2_orbs[i_c], c2_orbs[j_c])
                             lat.register_hopping_energies(dict([(h_name, h_0_c[i_c, j_c])]))
                             lat.add_one_hopping([0, 0], c2_orbs[i_c], c2_orbs[j_c], h_name)
                 else:
-                    lat.add_one_sublattice(self.x_name + "2",
-                                           [0, self.lattice_params.a * 2 * np.sqrt(3) / 3],
-                                           h_0_c)
+                    lat.add_one_sublattice(self.x_name + "2", pos_c2, h_0_c)
 
         if self.lattice_params.h_1_m is not None:
             cos = [[-1, -1], [0, 0], [-1, 0]] if not self.lat4 else [[0, -1], [0, 0], [0, 0], [1, 0], [-1, 0], [0, 0]]
